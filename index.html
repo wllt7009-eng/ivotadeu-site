@@ -115,25 +115,47 @@
         
         .btn:active { background: #00f2ff; color: #000; transform: scale(0.95); }
 
-        /* NOVO EFEITO PARA AS INFORMAÇÕES DE PREÇO */
-        .price-info {
-            margin-top: 25px;
-            font-size: 0.85rem;
-            color: #00f2ff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 400;
-            line-height: 1.8;
-            text-shadow: 0 0 5px rgba(0, 242, 255, 0.5);
-            animation: textFlicker 4s infinite;
+        /* --- NOVO EFEITO DE EXPLOSÃO E PREÇO --- */
+        .price-box-container {
+            margin-top: 15px;
+            position: relative;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @keyframes textFlicker {
-            0%, 100% { opacity: 1; text-shadow: 0 0 5px #00f2ff; }
-            50% { opacity: 0.7; text-shadow: 0 0 15px #00f2ff; }
-            52% { opacity: 1; }
-            54% { opacity: 0.8; }
+        .exploding-box {
+            position: absolute;
+            width: 10px; height: 10px;
+            background: #00f2ff;
+            box-shadow: 0 0 20px #00f2ff;
+            animation: boxExplode 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
         }
+
+        .price-content {
+            opacity: 0;
+            transform: scale(0.5);
+            animation: revealText 0.5s ease-out 0.8s forwards;
+            color: #00f2ff;
+            font-size: 0.75rem;
+            line-height: 1.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+        }
+
+        @keyframes boxExplode {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(4); opacity: 1; border-radius: 50%; }
+            100% { transform: scale(20); opacity: 0; filter: blur(10px); }
+        }
+
+        @keyframes revealText {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* -------------------------------------- */
 
         .section-wrapper {
             position: relative;
@@ -267,14 +289,18 @@
             </a>
             <button class="btn" onclick="navegar('tech')">Sistema Tech</button>
             
-            <div class="price-info">
-                💻 SITES A PARTIR DE R$150 <br>
-                📈 PROJETOS PERSONALIZADOS
+            <div class="price-box-container">
+                <div class="exploding-box"></div>
+                <div class="price-content">
+                    💻 Sites a partir de R$150 <br>
+                    📈 Projetos personalizados conforme sua necessidade
+                </div>
             </div>
         </div>
     </div>
 
     <div class="section-wrapper">
+        
         <div class="step-intro">
             <h2>Como criar um site grátis</h2>
             <p>Transforme sua ideia em "Estou online agora" com a nossa expertise. Para você que está montando um portfólio ou prestando serviços, siga estas etapas simples para começar.</p>
@@ -418,5 +444,4 @@
         };
     </script>
 </body>
-    </html>
-    
+</html>
