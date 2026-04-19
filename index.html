@@ -115,7 +115,7 @@
         
         .btn:active { background: #00f2ff; color: #000; transform: scale(0.95); }
 
-        /* --- ANIMAÇÃO DA CAIXA INTERATIVA --- */
+        /* --- ANIMAÇÃO DA CAIXA INTERATIVA (BAÚ REAL) --- */
         .price-box-container {
             margin-top: 20px;
             position: relative;
@@ -127,10 +127,13 @@
             cursor: pointer;
         }
 
+        /* SUBSTITUÍDO: CAIXA AZUL POR IMAGEM REAL DO BAÚ */
         .exploding-box {
             position: absolute;
-            width: 10px; height: 10px;
-            background: #00f2ff;
+            width: 12px; height: 12px; /* Mesmo tamanho da original */
+            background-image: url('d13f5683bc7fe962cdcd0bd925ac50aa.jpg'); /* Foto do baú real */
+            background-size: cover;
+            background-position: center;
             box-shadow: 0 0 20px #00f2ff;
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1;
