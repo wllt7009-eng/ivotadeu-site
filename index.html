@@ -390,10 +390,15 @@
             const zap = document.getElementById('whatsapp_lead').value;
             const email = document.getElementById('email_lead').value;
             
-            // Enviando para o Sheetbest conforme sua API
+            // Incluindo todos os campos na planilha
             fetch("https://api.sheetbest.com/sheets/2f39b228-9d1f-45e0-8dff-c34c14c99763", {
                 method: "POST", mode: "cors", headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ "Nome": nome, "WhatsApp": zap, "Email": email, "Data": new Date().toLocaleString() })
+                body: JSON.stringify({ 
+                    "Nome": nome, 
+                    "WhatsApp": zap, 
+                    "Email": email, 
+                    "Data": new Date().toLocaleString('pt-BR') 
+                })
             });
             
             window.open(`https://wa.me/5538997404945?text=${encodeURIComponent("Olá, meu nome é "+nome+" e quero um orçamento!")}`, '_blank');
