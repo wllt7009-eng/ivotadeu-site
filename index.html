@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     
     <style>
-        /* GARANTE O FUNDO PRETO DESDE O PRIMEIRO MILISSEGUNDO */
+        /* FUNDO PRETO ABSOLUTO */
         html, body {
             background-color: #000 !important;
             margin: 0;
@@ -61,14 +61,13 @@
             width: 100%; 
         }
         
-        /* ARTE HACKER DIAMANTE (MAIS PROFISSIONAL) */
-        .hacker-art { 
-            color: #00f2ff; 
-            font-family: monospace; 
-            font-size: 10px; 
-            white-space: pre; 
-            margin-bottom: 20px; 
-            text-shadow: 0 0 10px #00f2ff;
+        /* IMAGEM DO DIAMANTE REAL */
+        .diamond-img {
+            display: block;
+            margin: 0 auto 20px;
+            width: 60px; /* Tamanho do diamante */
+            height: auto;
+            filter: drop-shadow(0 0 10px #00f2ff); /* Brilho neon ciano */
         }
         
         .name { 
@@ -160,14 +159,7 @@
     <div class="background-elements" id="bg-elements"></div>
 
     <div class="container">
-        <div class="hacker-art">
-     /\
-    /  \
-   &lt;    &gt;
-    \  /
-     \/
-  DEV_OPS
-        </div>
+        <img src="https://i.imgur.com/kS5qJm9.png" alt="Diamante Real" class="diamond-img">
         <p class="name">Lopes Digital Co.</p>
         <h1>CONSTRUINDO <br> O FUTURO</h1>
         <div class="btn-group">
