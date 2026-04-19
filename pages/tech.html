@@ -7,34 +7,92 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #000; color: #fff; font-family: 'Orbitron', sans-serif; overflow-x: hidden; line-height: 1.6; }
-        .bg-grid { position: fixed; top: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,242,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,242,255,0.03) 1px, transparent 1px); background-size: 30px 30px; z-index: -1; }
+        
+        /* FUNDO COM GRADIENTE DE COR */
+        body { 
+            background: radial-gradient(circle at top, #1a0a2f 0%, #020202 100%);
+            color: #fff; 
+            font-family: 'Orbitron', sans-serif; 
+            overflow-x: hidden; 
+            line-height: 1.6; 
+        }
+        
+        /* GRID COM COR VIBRANTE (MAGENTA) */
+        .bg-grid { 
+            position: fixed; 
+            top: 0; width: 100%; height: 100%; 
+            background: 
+                linear-gradient(rgba(255,0,255,0.05) 1px, transparent 1px), 
+                linear-gradient(90deg, rgba(255,0,255,0.05) 1px, transparent 1px); 
+            background-size: 30px 30px; 
+            z-index: -1; 
+        }
         
         .wrapper { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
-        .header-tech { border-left: 5px solid #00f2ff; padding-left: 20px; margin-bottom: 60px; }
-        .header-tech h1 { font-size: 2.5rem; text-transform: uppercase; color: #00f2ff; }
         
-        .section-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(0,242,255,0.1); padding: 30px; margin-bottom: 40px; border-radius: 4px; backdrop-filter: blur(5px); }
-        .section-card h2 { color: #00f2ff; font-size: 1.2rem; margin-bottom: 20px; text-transform: uppercase; display: flex; align-items: center; }
-        .section-card h2::before { content: ">"; margin-right: 10px; color: #ff00ff; }
+        /* HEADER COM BORDA COLORIDA */
+        .header-tech { border-left: 5px solid #00f2ff; padding-left: 20px; margin-bottom: 60px; box-shadow: -10px 0 20px rgba(0, 242, 255, 0.2); }
+        .header-tech h1 { font-size: 2.5rem; text-transform: uppercase; color: #fff; text-shadow: 0 0 15px #00f2ff; }
         
-        .tech-text { font-family: 'Courier New', Courier, monospace; color: #ccc; font-size: 1rem; text-align: justify; }
-        .highlight { color: #ff00ff; font-weight: bold; }
+        /* CARTÕES COM BORDA E FUNDO COLORIDO SUTIL */
+        .section-card { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(0,242,255,0.2); 
+            padding: 30px; 
+            margin-bottom: 40px; 
+            border-radius: 4px; 
+            backdrop-filter: blur(5px); 
+            transition: 0.3s;
+        }
+        
+        .section-card:hover {
+            border-color: #ff00ff;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .section-card h2 { color: #00f2ff; font-size: 1.2rem; margin-bottom: 20px; text-transform: uppercase; display: flex; align-items: center; text-shadow: 0 0 10px #00f2ff; }
+        .section-card h2::before { content: ">"; margin-right: 10px; color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+        
+        .tech-text { font-family: 'Courier New', Courier, monospace; color: #fff; font-size: 1rem; text-align: justify; }
+        
+        /* DESTAQUES COM COR SUPER VIBRANTE */
+        .highlight { color: #ff00ff; font-weight: bold; text-shadow: 0 0 5px #ff00ff; }
 
         .site-models { display: grid; gap: 20px; margin-top: 20px; }
-        .model { padding: 15px; border-left: 2px solid #ff00ff; background: rgba(255,0,255,0.03); }
-        .model strong { color: #fff; display: block; margin-bottom: 5px; }
+        
+        /* MODELOS COM CORES ALTERNADAS */
+        .model { padding: 15px; border-left: 2px solid #ff00ff; background: rgba(255,0,255,0.05); box-shadow: 0 0 10px rgba(255, 0, 255, 0.1); }
+        .model strong { color: #fff; display: block; margin-bottom: 5px; text-transform: uppercase; }
 
         .footer-nav { text-align: center; margin-top: 50px; }
-        .btn-back { color: #00f2ff; text-decoration: none; border: 1px solid #00f2ff; padding: 10px 20px; font-size: 0.8rem; transition: 0.3s; }
-        .btn-back:hover { background: #00f2ff; color: #000; box-shadow: 0 0 20px #00f2ff; }
+        
+        /* BOTÃO DE VOLTAR VIBRANTE */
+        .btn-back { 
+            color: #ff00ff; 
+            text-decoration: none; 
+            border: 2px solid #ff00ff; 
+            padding: 15px 30px; 
+            font-size: 0.9rem; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s; 
+            background: rgba(255, 0, 255, 0.05);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+        }
+        .btn-back:hover { 
+            background: #ff00ff; 
+            color: #000; 
+            box-shadow: 0 0 40px #ff00ff; 
+        }
     </style>
 </head>
 <body>
     <div class="bg-grid"></div>
     <div class="wrapper">
         <header class="header-tech">
-            <p style="font-size: 10px; color: #ff00ff;">STATUS: ACESSO AUTORIZADO</p>
+            <p style="font-size: 10px; color: #ff00ff; letter-spacing: 3px; text-shadow: 0 0 5px #ff00ff;">STATUS: ACESSO AUTORIZADO</p>
             <h1>O Núcleo da Engenharia</h1>
         </header>
 
@@ -50,15 +108,15 @@
             <div class="site-models">
                 <div class="model">
                     <strong>01. ULTRA-MODERNO (CYBERPUNK)</strong>
-                    <p style="font-size: 0.8rem; color: #888;">Design agressivo, focado em impacto visual e tecnologia. Ideal para gamers, tech e marcas inovadoras.</p>
+                    <p style="font-size: 0.85rem; color: #aaa;">Design agressivo, focado em impacto visual e tecnologia. Ideal para gamers, tech e marcas inovadoras.</p>
                 </div>
-                <div class="model" style="border-color: #00f2ff;">
+                <div class="model" style="border-color: #00f2ff; background: rgba(0, 242, 255, 0.05); box-shadow: 0 0 10px rgba(0, 242, 255, 0.1);">
                     <strong>02. CORPORATIVO ELITE</strong>
-                    <p style="font-size: 0.8rem; color: #888;">Minimalismo luxuoso. Fundo limpo, fontes serifadas e foco total na autoridade e confiança do cliente.</p>
+                    <p style="font-size: 0.85rem; color: #aaa;">Minimalismo luxuoso. Fundo limpo, fontes serifadas e foco total na autoridade e confiança do cliente.</p>
                 </div>
                 <div class="model">
                     <strong>03. HIGH-CONVERSION LANDING PAGE</strong>
-                    <p style="font-size: 0.8rem; color: #888;">Arquitetura de página única. Onde cada botão e texto são estrategicamente posicionados para o WhatsApp.</p>
+                    <p style="font-size: 0.85rem; color: #aaa;">Arquitetura de página única. Onde cada botão e texto são estrategicamente posicionados para o WhatsApp.</p>
                 </div>
             </div>
         </div>
