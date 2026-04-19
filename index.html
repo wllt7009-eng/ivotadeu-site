@@ -4,146 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lopes | Tech Vision</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --neon: #00f2ff;
-            --dark-bg: #020202;
-            --glass: rgba(0, 242, 255, 0.05);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: var(--dark-bg);
-            color: white;
+        body {
+            background-color: #020202; /* Preto Profundo */
+            color: #ffffff;
             font-family: 'Orbitron', sans-serif;
-            overflow: hidden;
-            height: 100vh;
-        }
-
-        /* Fundo Tecnológico de Linhas */
-        .grid-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(var(--glass) 1px, transparent 1px), 
-                              linear-gradient(90deg, var(--glass) 1px, transparent 1px);
-            background-size: 50px 50px;
-            background-position: center;
-            perspective: 1000px;
-            animation: gridMove 10s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes gridMove {
-            from { transform: rotateX(45deg) translateY(0); }
-            to { transform: rotateX(45deg) translateY(50px); }
-        }
-
-        .hero {
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            text-align: center;
-            background: radial-gradient(circle, rgba(0,242,255,0.05) 0%, transparent 70%);
-        }
-
-        /* Caveira Hacker Melhorada */
-        .hacker-icon {
-            color: var(--neon);
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 14px;
-            line-height: 12px;
-            white-space: pre;
-            margin-bottom: 30px;
-            text-shadow: 0 0 15px var(--neon);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(0.95); }
-        }
-
-        .name-tag {
-            font-size: 0.9rem;
-            letter-spacing: 8px;
-            color: #888;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        /* Título com Efeito Glitch Surreal */
-        .glitch-title {
-            font-size: 4rem;
-            font-weight: 900;
-            text-transform: uppercase;
+            overflow: hidden;
             position: relative;
-            color: white;
-            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
-            margin: 0;
         }
 
-        .glitch-title::before, .glitch-title::after {
-            content: "CONSTRUINDO O FUTURO";
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        /* Linhas tecnológicas de fundo (O Sal do site) */
+        .grid {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            transform: perspective(500px) rotateX(60deg);
+            top: -50%;
+            animation: move 10s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes move {
+            from { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            to { transform: perspective(500px) rotateX(60deg) translateY(40px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* A Caveira Hacker */
+        .hacker-art {
+            color: #00f2ff;
+            font-family: monospace;
+            font-size: 10px;
+            white-space: pre;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00f2ff;
+        }
+
+        .name {
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: #00f2ff;
+            margin-bottom: 15px;
             opacity: 0.8;
         }
 
-        .glitch-title:hover::before {
-            color: #ff00ff;
-            z-index: -1;
-            animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite;
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+            line-height: 1;
         }
 
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-3px, 3px); }
-            40% { transform: translate(-3px, -3px); }
-            60% { transform: translate(3px, 3px); }
-            80% { transform: translate(3px, -3px); }
-            100% { transform: translate(0); }
-        }
-
-        /* Botões Estilo Cyberpunk */
-        .btn-box {
+        /* Botões com efeito de Neon */
+        .btn-group {
             display: flex;
-            gap: 25px;
-            margin-top: 50px;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
         }
 
-        .btn-cyber {
-            position: relative;
-            padding: 20px 40px;
+        .btn {
+            width: 280px;
+            padding: 18px;
             background: transparent;
-            border: 1px solid var(--neon);
-            color: var(--neon);
+            border: 2px solid #00f2ff;
+            color: #00f2ff;
             font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-decoration: none;
+            font-weight: 900;
             text-transform: uppercase;
-            overflow: hidden;
-            transition: 0.5s;
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: 0.3s;
             cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
         }
 
-        .btn-cyber:hover {
-            background: var(--neon);
-            color: black;
-            box-shadow: 0 0 50px var(--neon);
+        .btn:hover {
+            background: #00f2ff;
+            color: #000;
+            box-shadow: 0 0 40px #00f2ff;
         }
 
-        /* Portal e Bug */
-        .portal-fx {
-            position: fixed; top: 50%; left: 50%; width: 0; height: 0;
-            background: var(--neon); border-radius: 50%;
-            transform: translate(-50%, -50%); z-index: 9999;
-            transition: 1s cubic-bezier(0.7, 0, 0.3, 1);
+        /* Efeito de Portal ao clicar */
+        .portal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: #00f2ff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
             pointer-events: none;
+            transition: width 0.8s ease-in, height 0.8s ease-in;
         }
-        .portal-fx.active { width: 300
-                           
+    </style>
+</head>
+<body>
+
+    <div class="grid"></div>
+    <div class="portal" id="portal"></div>
+
+    <div class="container">
+        <div class="hacker-art">
+     _  _
+    ( \/ )
+     \  /
+      \/
+   LOPES.DEV
+        </div>
+
+        <p class="name">IVO TADEU ALMEIDA LOPES</p>
+        <h1>CONSTRUINDO <br> O FUTURO</h1>
+
+        <div class="btn-group">
+            <button class="btn" onclick="transicao('whats')">Quero um Site</button>
+            <button class="btn" onclick="transicao('tech')">Sistema Tech</button>
+        </div>
+    </div>
+
+    <script>
+        function transicao(destino) {
+            const p = document.getElementById('portal');
+            p.style.width = '300vw';
+            p.style.height = '300vw';
+            
+            setTimeout(() => {
+                if(destino === 'whats') {
+                    window.location.href = "https://wa.me/5538997404945?text=oi%20quero%20um%20site";
+                } else {
+                    window.location.href = "pages/tech.html";
+                }
+            }, 800);
+        }
+    </script>
+</body>
+</html>
