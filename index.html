@@ -129,7 +129,7 @@
 
         .exploding-box {
             position: absolute;
-            width: 18px; height: 18px; /* Aumentado de 12px para 18px */
+            width: 18px; height: 18px; 
             background-image: url('d13f5683bc7fe962cdcd0bd925ac50aa.jpg'); 
             background-size: cover;
             background-position: center;
@@ -140,7 +140,7 @@
         }
 
         .exploding-box.active {
-            transform: scale(6); /* Reduzi a escala da explosão proporcionalmente */
+            transform: scale(6); 
             opacity: 0;
             filter: blur(4px);
         }
@@ -167,8 +167,8 @@
 
         .click-hint {
             font-size: 8px;
-            font-family: 'Orbitron', sans-serif; /* Fonte Orbitron */
-            color: #00f2ff; /* Cor Ciano */
+            font-family: 'Orbitron', sans-serif;
+            color: #00f2ff;
             margin-top: 10px;
             letter-spacing: 1.5px;
             transition: 0.3s;
@@ -322,7 +322,7 @@
                     💻 Sites a partir de R$ 150 <br>
                     📈 Projetos personalizados conforme sua necessidade
                 </div>
-                <div class="click-hint" id="hint-txt"> clique aqui </div>
+                <div class="click-hint" id="hint-txt">clique aqui</div>
             </div>
         </div>
     </div>
@@ -349,6 +349,7 @@
                 <form onsubmit="chamarWhatsapp(event)">
                     <div class="input-group"><label>Seu Nome <span>*</span></label><input type="text" id="nome_lead" class="form-input" placeholder="João Silva" required></div>
                     <div class="input-group"><label>WhatsApp <span>*</span></label><input type="tel" id="whatsapp_lead" class="form-input" placeholder="(31) 99999-9999" required></div>
+                    <div class="input-group"><label>E-mail (opcional)</label><input type="email" id="email_lead" class="form-input" placeholder="seu@email.com"></div>
                     <button type="submit" class="btn-whatsapp">Chamar no WhatsApp agora</button>
                 </form>
             </div>
@@ -366,7 +367,7 @@
             if (txt.classList.contains('show')) {
                 txt.classList.remove('show');
                 box.classList.remove('active');
-                hint.innerText = "clique aq ↗";
+                hint.innerText = "clique aqui ↗";
             } else {
                 txt.classList.add('show');
                 box.classList.add('active');
@@ -386,6 +387,15 @@
         async function chamarWhatsapp(event) {
             event.preventDefault();
             const nome = document.getElementById('nome_lead').value;
+            const zap = document.getElementById('whatsapp_lead').value;
+            const email = document.getElementById('email_lead').value;
+            
+            // Enviando para o Sheetbest conforme sua API
+            fetch("https://api.sheetbest.com/sheets/2f39b228-9d1f-45e0-8dff-c34c14c99763", {
+                method: "POST", mode: "cors", headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "Nome": nome, "WhatsApp": zap, "Email": email, "Data": new Date().toLocaleString() })
+            });
+            
             window.open(`https://wa.me/5538997404945?text=${encodeURIComponent("Olá, meu nome é "+nome+" e quero um orçamento!")}`, '_blank');
         }
 
