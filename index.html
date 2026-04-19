@@ -2,26 +2,34 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Lopes | Tech Vision</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            /* Impede que o usuário selecione textos ou imagens, como num app */
+            user-select: none; 
+            -webkit-tap-highlight-color: transparent;
+        }
 
         body {
-            background-color: #020202; /* Preto Profundo */
+            background-color: #020202;
             color: #ffffff;
             font-family: 'Orbitron', sans-serif;
-            min-height: 100vh;
+            height: 100vh;
+            width: 100vw;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            position: relative;
+            /* TRAVA A TELA: Impede qualquer rolagem para os lados ou para baixo */
+            overflow: hidden; 
+            position: fixed; 
         }
 
-        /* Linhas tecnológicas de fundo (O Sal do site) */
         .grid {
             position: absolute;
             width: 200%;
@@ -46,9 +54,9 @@
             z-index: 10;
             text-align: center;
             padding: 20px;
+            width: 100%;
         }
 
-        /* A Caveira Hacker */
         .hacker-art {
             color: #00f2ff;
             font-family: monospace;
@@ -67,14 +75,13 @@
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem; /* Ajustado para caber melhor em telas pequenas */
             font-weight: 900;
             margin-bottom: 40px;
             text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
-            line-height: 1;
+            line-height: 1.1;
         }
 
-        /* Botões com efeito de Neon */
         .btn-group {
             display: flex;
             flex-direction: column;
@@ -83,7 +90,8 @@
         }
 
         .btn {
-            width: 280px;
+            width: 85%; /* Ajustado para ocupar a largura do celular como um app */
+            max-width: 300px;
             padding: 18px;
             background: transparent;
             border: 2px solid #00f2ff;
@@ -95,16 +103,14 @@
             letter-spacing: 2px;
             transition: 0.3s;
             cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+            outline: none;
         }
 
-        .btn:hover {
+        .btn:active { /* Feedback visual ao tocar */
             background: #00f2ff;
             color: #000;
-            box-shadow: 0 0 40px #00f2ff;
         }
 
-        /* Efeito de Portal ao clicar */
         .portal {
             position: fixed;
             top: 50%;
@@ -116,13 +122,11 @@
             transform: translate(-50%, -50%);
             z-index: 9999;
             pointer-events: none;
-            transition: width 0.8s ease-in, height 0.8s ease-in;
+            transition: width 0.8s cubic-bezier(0.7, 0, 0.3, 1), height 0.8s cubic-bezier(0.7, 0, 0.3, 1);
         }
     </style>
 </head>
-<body>
-
-    <div class="grid"></div>
+<body oncontextmenu="return false;"> <div class="grid"></div>
     <div class="portal" id="portal"></div>
 
     <div class="container">
@@ -146,8 +150,8 @@
     <script>
         function transicao(destino) {
             const p = document.getElementById('portal');
-            p.style.width = '300vw';
-            p.style.height = '300vw';
+            p.style.width = '350vw';
+            p.style.height = '350vw';
             
             setTimeout(() => {
                 if(destino === 'whats') {
