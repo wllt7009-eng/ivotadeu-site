@@ -7,29 +7,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ESTILOS ORIGINAIS (SEM MUDANÇA) --- */
+        /* FORÇANDO O FUNDO PRETO LOGO NO INÍCIO */
+        html, body {
+            background-color: #000 !important;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; -webkit-tap-highlight-color: transparent; }
         
         body { 
-            background: radial-gradient(circle at center, #0a1a2f 0%, #020202 100%);
             color: #ffffff; 
             font-family: 'Orbitron', sans-serif; 
-            height: 100vh; 
-            width: 100vw; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            overflow: hidden; 
             position: fixed; 
         }
         
+        /* GRID COM COR AJUSTADA PARA BRILHAR NO PRETO */
         .grid { 
             position: absolute; 
             width: 200%; 
             height: 200%; 
             background-image: 
-                linear-gradient(rgba(0, 242, 255, 0.2) 1px, transparent 1px), 
-                linear-gradient(90deg, rgba(0, 242, 255, 0.2) 1px, transparent 1px); 
+                linear-gradient(rgba(0, 242, 255, 0.15) 1px, transparent 1px), 
+                linear-gradient(90deg, rgba(0, 242, 255, 0.15) 1px, transparent 1px); 
             background-size: 40px 40px; 
             transform: perspective(500px) rotateX(60deg); 
             top: -50%; 
@@ -38,7 +44,7 @@
         }
         @keyframes moveGrid { from { transform: perspective(500px) rotateX(60deg) translateY(0); } to { transform: perspective(500px) rotateX(60deg) translateY(40px); } }
 
-        .container { position: relative; z-index: 10; text-align: center; padding: 20px; width: 100%; transition: 0.1s; }
+        .container { position: relative; z-index: 10; text-align: center; padding: 20px; width: 100%; }
         
         .hacker-art { 
             color: #00f2ff; 
@@ -46,12 +52,10 @@
             font-size: 10px; 
             white-space: pre; 
             margin-bottom: 20px; 
-            text-shadow: 0 0 10px #00f2ff, 0 0 20px #ff00ff;
-            animation: pulseHacker 2s infinite; 
+            text-shadow: 0 0 10px #00f2ff;
         }
-        @keyframes pulseHacker { 0%, 100% { opacity: 1; text-shadow: 0 0 10px #00f2ff, 0 0 20px #ff00ff; } 50% { opacity: 0.7; text-shadow: 0 0 5px #00f2ff, 0 0 10px #ff00ff; } }
         
-        .name { font-size: 10px; letter-spacing: 5px; color: #ff00ff; margin-bottom: 15px; text-shadow: 0 0 5px #ff00ff; text-transform: uppercase; }
+        .name { font-size: 10px; letter-spacing: 5px; color: #ff00ff; margin-bottom: 15px; text-shadow: 0 0 5px #ff00ff; }
         
         h1 { 
             font-size: 2.2rem; 
@@ -60,7 +64,6 @@
             background: linear-gradient(90deg, #00f2ff, #ff00ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(0, 242, 255, 0.5); 
             line-height: 1.1; 
         }
         
@@ -70,7 +73,7 @@
             width: 85%; 
             max-width: 300px; 
             padding: 18px; 
-            background: rgba(0, 242, 255, 0.05); 
+            background: rgba(0, 0, 0, 0.8); 
             border: 2px solid #00f2ff; 
             color: #00f2ff; 
             font-family: 'Orbitron', sans-serif; 
@@ -79,84 +82,48 @@
             letter-spacing: 2px; 
             transition: 0.3s; 
             cursor: pointer; 
-            outline: none; 
-            box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
         }
         
-        .btn-tech {
-            border-color: #ff00ff;
-            color: #ff00ff;
-            background: rgba(255, 0, 255, 0.05);
-            box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
-        }
+        .btn:active { background: #00f2ff; color: #000; transform: scale(0.95); }
 
-        .btn:active { background: #00f2ff; color: #000; transform: scale(0.95); box-shadow: 0 0 30px #00f2ff; }
-        .btn-tech:active { background: #ff00ff; color: #000; box-shadow: 0 0 30px #ff00ff; }
-
-        .scanner { 
-            position: fixed; 
-            top: 0; left: 0; 
-            width: 100%; height: 100%; 
-            background: repeating-linear-gradient(0deg, rgba(0, 242, 255, 0.2), rgba(0, 242, 255, 0.2) 1px, transparent 1px, transparent 2px); 
-            z-index: 9999; 
-            display: none; 
-            pointer-events: none; 
-        }
-        
-        .glitch-effect { animation: glitchScanner 0.2s infinite; }
-        @keyframes glitchScanner { 
-            0% { transform: translate(2px, 0); text-shadow: 4px 0 #ff00ff, -4px 0 #00ffff; } 
-            50% { transform: translate(-2px, 0); text-shadow: -4px 0 #ff00ff, 4px 0 #00ffff; } 
-            100% { transform: translate(0); text-shadow: 0 0 15px rgba(0, 242, 255, 0.5); } 
-        }
-
-        /* --- NOVOS ESTILOS PARA ANIMAÇÕES DE FUNDO --- */
-        
-        /* Container para segurar os elementos de fundo */
+        /* ELEMENTOS DE FUNDO (MARIO KART / TECH) */
         .background-elements {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Não interfere nos cliques */
-            z-index: 1; /* Atrás do container principal (z-index 10) */
+            pointer-events: none;
+            z-index: 1;
         }
         
-        /* Classe base para cada elemento de fundo */
         .b-element {
             position: absolute;
-            color: rgba(255, 255, 255, 0.15); /* Branco bem transparente */
-            font-size: 30px; /* Tamanho base */
-            text-shadow: 0 0 10px rgba(0, 242, 255, 0.1), 0 0 15px rgba(255, 0, 255, 0.1); /* Brilho suave */
-            opacity: 0; /* Começa invisível */
-            animation: floatElement 15s linear infinite, fadeInOutElement 15s linear infinite;
+            font-size: 24px;
+            opacity: 0;
+            animation: floatElement 12s linear infinite;
         }
 
-        /* Animação para flutuar e mover */
         @keyframes floatElement {
-            0% { transform: translate(var(--start-x), var(--start-y)) rotate(0deg); opacity: 0; }
-            10% { opacity: var(--max-opacity); } /* Aparece rápido */
-            50% { transform: translate(var(--mid-x), var(--mid-y)) rotate(var(--mid-rotate)); }
-            90% { opacity: var(--max-opacity); } /* Fica visível */
-            100% { transform: translate(var(--end-x), var(--end-y)) rotate(var(--end-rotate)); opacity: 0; } /* Desaparece */
+            0% { transform: translate(var(--sx), var(--sy)) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.4; }
+            100% { transform: translate(var(--ex), var(--ey)) rotate(360deg); opacity: 0; }
         }
 
-        /* Animação para fadeIn/fadeOut (garante que não "pisque" ao reaparecer) */
-        @keyframes fadeInOutElement {
-            0%, 100% { opacity: 0; }
-            10%, 90% { opacity: var(--max-opacity); }
+        /* OVERLAY DE TRANSIÇÃO */
+        #transition-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.5s;
         }
     </style>
 </head>
 <body oncontextmenu="return false;">
     <div class="grid"></div>
-    <div class="scanner" id="scanner"></div>
+    <div id="transition-overlay"></div>
+    <div class="background-elements" id="bg-elements"></div>
 
-    <div class="background-elements" id="background-elements">
-        </div>
-
-    <div class="container" id="main-ui">
+    <div class="container">
         <div class="hacker-art">
     _  _ 
    ( \/ )
@@ -167,26 +134,17 @@
         <p class="name">IVO TADEU ALMEIDA LOPES</p>
         <h1>CONSTRUINDO <br> O FUTURO</h1>
         <div class="btn-group">
-            <button class="btn" onclick="executar('whats')">Quero um Site</button>
-            <button class="btn" onclick="executar('tech')">Sistema Tech</button>
+            <button class="btn" onclick="navegar('whats')">Quero um Site</button>
+            <button class="btn" onclick="navegar('tech')">Sistema Tech</button>
         </div>
     </div>
 
     <script>
-        // --- SCRIPT ORIGINAL (SEM MUDANÇA) ---
-        function executar(destino) {
-            const scan = document.getElementById('scanner');
-            const ui = document.getElementById('main-ui');
-            
-            // Muda a cor do scanner baseada no destino
-            if (destino === 'tech') {
-                scan.style.background = 'repeating-linear-gradient(0deg, rgba(255, 0, 255, 0.2), rgba(255, 0, 255, 0.2) 1px, transparent 1px, transparent 2px)';
-            } else {
-                scan.style.background = 'repeating-linear-gradient(0deg, rgba(0, 242, 255, 0.2), rgba(0, 242, 255, 0.2) 1px, transparent 1px, transparent 2px)';
-            }
-            
-            scan.style.display = 'block';
-            ui.classList.add('glitch-effect');
+        // Função de navegação com o fade preto
+        function navegar(destino) {
+            const overlay = document.getElementById('transition-overlay');
+            overlay.style.opacity = '1';
+            overlay.style.pointerEvents = 'all';
             
             setTimeout(() => {
                 if(destino === 'whats') {
@@ -194,46 +152,37 @@
                 } else {
                     window.location.href = "pages/tech.html";
                 }
-            }, 700);
+            }, 500);
         }
 
-        // --- NOVO SCRIPT PARA GERAR ELEMENTOS DE FUNDO ---
-        const backgroundElementsContainer = document.getElementById('background-elements');
-        const elementList = [
-            '🏎️', '🍄', '🍌', '⭐', '🐢', '🛸', '👾', '🚀', '💀', '🔥', '⚡', '💻', '📡' // Lista de ícones Mario Kart + Tech
-        ];
-        const numElements = 20; // Quantidade de elementos na tela
+        // Criando os itens de fundo
+        const icons = ['🏎️', '🍄', '🍌', '⭐', '🐢', '🛸', '👾', '🚀', '⚡', '💻'];
+        const container = document.getElementById('bg-elements');
 
-        function createBackgroundElement() {
-            const element = document.createElement('div');
-            element.classList.add('b-element');
+        for (let i = 0; i < 15; i++) {
+            const el = document.createElement('div');
+            el.className = 'b-element';
+            el.innerText = icons[Math.floor(Math.random() * icons.length)];
             
-            // Sorteia um ícone da lista
-            const randomIcon = elementList[Math.floor(Math.random() * elementList.length)];
-            element.innerText = randomIcon;
+            // Posições aleatórias
+            el.style.setProperty('--sx', Math.random() * 100 + 'vw');
+            el.style.setProperty('--sy', Math.random() * 100 + 'vh');
+            el.style.setProperty('--ex', Math.random() * 100 + 'vw');
+            el.style.setProperty('--ey', Math.random() * 100 + 'vh');
             
-            // Define propriedades CSS variáveis para animação aleatória
-            element.style.setProperty('--start-x', `${Math.random() * 100}vw`);
-            element.style.setProperty('--start-y', `${Math.random() * 100}vh`);
-            element.style.setProperty('--mid-x', `${Math.random() * 100}vw`);
-            element.style.setProperty('--mid-y', `${Math.random() * 100}vh`);
-            element.style.setProperty('--end-x', `${Math.random() * 100}vw`);
-            element.style.setProperty('--end-y', `${Math.random() * 100}vh`);
-            element.style.setProperty('--mid-rotate', `${(Math.random() - 0.5) * 360}deg`);
-            element.style.setProperty('--end-rotate', `${(Math.random() - 0.5) * 360}deg`);
-            element.style.setProperty('--max-opacity', (Math.random() * 0.2 + 0.1)); // Transparência aleatória sutil
+            el.style.animationDelay = Math.random() * 10 + 's';
+            el.style.left = "0";
+            el.style.top = "0";
             
-            // Duração e delay aleatórios para não parecer tudo igual
-            element.style.animationDuration = `${Math.random() * 10 + 10}s`; // 10 a 20 segundos
-            element.style.animationDelay = `-${Math.random() * 20}s`; // Começa em tempos diferentes
-
-            backgroundElementsContainer.appendChild(element);
+            container.appendChild(el);
         }
 
-        // Cria os elementos iniciais
-        for (let i = 0; i < numElements; i++) {
-            createBackgroundElement();
-        }
+        // Corrige o bug do branco ao voltar
+        window.onpageshow = function(event) {
+            const overlay = document.getElementById('transition-overlay');
+            overlay.style.opacity = '0';
+            overlay.style.pointerEvents = 'none';
+        };
     </script>
 </body>
 </html>
