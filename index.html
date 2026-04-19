@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lopes | Tech Vision</title>
+    <style>
+        :root { --neon: #00f2ff; --bg: #050505; }
+        body { background: var(--bg); color: white; font-family: 'Courier New', Courier, monospace; margin: 0; overflow-x: hidden; }
+        
+        /* Efeito de Fundo Matrix Suave */
+        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; }
+
+        /* Desenho do Hacker (ASCII Art) */
+        .hacker-art { color: var(--neon); font-size: 10px; white-space: pre; line-height: 8px; margin-bottom: 20px; text-shadow: 0 0 5px var(--neon); }
+
+        h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 5px; margin: 10px; }
+        .glitch { position: relative; color: var(--neon); }
+
+        /* Botões Tecnológicos */
+        .btn-container { display: flex; gap: 20px; margin-top: 30px; }
+        .btn { padding: 15px 30px; border: 2px solid var(--neon); color: var(--neon); text-decoration: none; font-weight: bold; transition: 0.4s; cursor: pointer; background: transparent; }
+        .btn:hover { background: var(--neon); color: black; box-shadow: 0 0 30px var(--neon); }
+
+        /* Efeito de Portal */
+        .portal { position: fixed; top: 50%; left: 50%; width: 0; height: 0; background: var(--neon); border-radius: 50%; transform: translate(-50%, -50%); z-index: 9999; transition: 0.8s ease-in; pointer-events: none; }
+        .portal.active { width: 300vw; height: 300vw; }
+
+        /* Efeito de Bug/Hacker ao sair */
+        .bug-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: green; color: black; display: none; z-index: 10000; font-size: 20px; overflow: hidden; }
+    </style>
+</head>
+<body>
+
+    <div class="portal" id="portal"></div>
+    <div class="bug-overlay" id="bug"><code>LOADING_CORRUPTED_DATA... <br> SYSTEM_BREACH... <br> BYPASSING_SECURITY...</code></div>
+
+    <section class="hero">
+        <div class="hacker-art">
+     .---.
+    /     \
+    |() ()|
+    \  ^  /
+     |||||
+     |||||
+        </div>
+
+        <p style="letter-spacing: 10px;">IVO TADEU ALMEIDA LOPES</p>
+        <h1 class="glitch">CONSTRUINDO O FUTURO</h1>
+        
+        <div class="btn-container">
+            <button class="btn" onclick="irParaWhats()">QUERO UM SITE</button>
+            
+            <button class="btn" onclick="irParaTech()">SISTEMA TECH</button>
+        </div>
+    </section>
+
+    <script>
+        function irParaWhats() {
+            document.getElementById('portal').classList.add('active');
+            setTimeout(() => {
+                window.location.href = "https://wa.me/5538997404945?text=oi%20quero%20um%20site";
+            }, 8000);
+        }
+
+        function irParaTech() {
+            document.getElementById('bug').style.display = 'block';
+            // Simula bug nas letras
+            setInterval(() => {
+                document.getElementById('bug').innerHTML += Math.random().toString(36).substring(2, 15);
+            }, 50);
+            setTimeout(() => {
+                window.location.href = "pages/tech.html";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
