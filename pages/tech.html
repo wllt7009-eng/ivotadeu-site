@@ -55,10 +55,14 @@
         
         .highlight { color: #ff00ff; font-weight: bold; text-shadow: 0 0 5px #ff00ff; }
 
-        .site-models { display: grid; gap: 20px; margin-top: 20px; }
+        /* GRID DE ARQUITETURAS ATUALIZADO */
+        .site-models { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; }
+        @media (min-width: 600px) { .site-models { grid-template-columns: 1fr 1fr; } }
         
-        .model { padding: 15px; border-left: 2px solid #ff00ff; background: rgba(255,0,255,0.05); box-shadow: 0 0 10px rgba(255, 0, 255, 0.1); }
-        .model strong { color: #fff; display: block; margin-bottom: 5px; text-transform: uppercase; }
+        .model { padding: 15px; border-left: 2px solid #ff00ff; background: rgba(255,0,255,0.05); transition: 0.3s; }
+        .model:hover { background: rgba(255,0,255,0.15); transform: translateX(5px); }
+        .model strong { color: #fff; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 0.9rem; }
+        .model p { font-size: 0.8rem; color: #ccc; line-height: 1.3; }
 
         .footer-nav { text-align: center; margin-top: 50px; }
         
@@ -96,13 +100,6 @@
         </header>
 
         <div class="section-card">
-            <h2>Estratégia e Conversão</h2>
-            <div class="tech-text">
-                Programação não é apenas "fazer sites", é a manipulação de <span class="highlight">Estruturas de Dados</span> focadas em vender. Eu utilizo técnicas de <span class="highlight">Engenharia de Performance</span> para garantir que seu cliente não perca tempo esperando e vá direto para o fechamento.
-            </div>
-        </div>
-
-        <div class="section-card">
             <h2>Por que Ivo Lopes?</h2>
             <div class="tech-text">
                 Desenvolvo sites focados em <span class="highlight">pequenos negócios</span>, seja para o seu mercado, padaria ou para divulgar sua marca na internet. Posso criar desde <span class="highlight">sistemas de pagamento</span> seguros até páginas personalizadas e totalmente animadas, tudo de acordo com o que você preferir. 
@@ -115,13 +112,36 @@
             <h2>Arquiteturas Disponíveis</h2>
             <div class="site-models">
                 <div class="model">
-                    <strong>01. ULTRA-MODERNO</strong>
-                    <p style="font-size: 0.85rem; color: #aaa;">Design agressivo, focado em impacto visual e tecnologia.</p>
+                    <strong>01. Catálogo Digital</strong>
+                    <p>Ideal para mercados e padarias. Seus produtos organizados e prontos para o cliente escolher.</p>
                 </div>
-                <div class="model" style="border-color: #00f2ff; background: rgba(0, 242, 255, 0.05);">
-                    <strong>02. CORPORATIVO ELITE</strong>
-                    <p style="font-size: 0.85rem; color: #aaa;">Minimalismo luxuoso focado em autoridade e confiança.</p>
+                <div class="model" style="border-color: #00f2ff;">
+                    <strong>02. Checkout & Pagamentos</strong>
+                    <p>Integração de pagamentos direto no site para automatizar suas vendas 24h por dia.</p>
                 </div>
+                <div class="model">
+                    <strong>03. Landing Pages de Alta Conversão</strong>
+                    <p>Páginas únicas focadas em um só objetivo: transformar visitantes em clientes de WhatsApp.</p>
+                </div>
+                <div class="model" style="border-color: #00f2ff;">
+                    <strong>04. Sites Institucionais Animados</strong>
+                    <p>Presença digital de luxo com animações fluidas para passar autoridade total para sua marca.</p>
+                </div>
+                <div class="model">
+                    <strong>05. Portfólio Profissional</strong>
+                    <p>Espaço personalizado para prestadores de serviço mostrarem seu trabalho com estilo.</p>
+                </div>
+                <div class="model" style="border-color: #00f2ff;">
+                    <strong>06. Link Tree Customizado</strong>
+                    <p>Central de links exclusiva para sua bio, muito superior aos modelos genéricos do mercado.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>Engenharia de Performance</h2>
+            <div class="tech-text">
+                Não entrego apenas um "rostinho bonito". Meus projetos são otimizados em <span class="highlight">tempo de carregamento</span> e lógica de conversão, garantindo que sua marca seja encontrada e respeitada na rede.
             </div>
         </div>
 
