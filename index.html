@@ -115,46 +115,63 @@
         
         .btn:active { background: #00f2ff; color: #000; transform: scale(0.95); }
 
-        /* --- AJUSTE NA ANIMAÇÃO DE EXPLOSÃO E FONTE --- */
+        /* --- ANIMAÇÃO DA CAIXA SIMPLIFICADA E BONITA --- */
         .price-box-container {
             margin-top: 20px;
             position: relative;
             min-height: 70px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
         }
 
         .exploding-box {
             position: absolute;
-            width: 12px; height: 12px;
+            width: 10px; height: 10px;
             background: #00f2ff;
-            box-shadow: 0 0 30px #00f2ff, 0 0 60px #ff00ff;
-            border-radius: 2px;
-            animation: boxExplode 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            box-shadow: 0 0 20px #00f2ff;
+            animation: boxFadeOut 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         .price-content {
             opacity: 0;
-            transform: translateY(10px) scale(0.9);
-            animation: revealText 0.8s ease-out 1s forwards;
+            transform: scale(0.95);
+            animation: revealSmooth 0.6s ease-out 0.8s forwards;
             color: #00f2ff;
-            font-size: 0.85rem; /* Um trisquinho maior como solicitado */
+            font-size: 0.80rem; /* Reduzido para 0.80 */
             font-weight: 900;
             line-height: 1.6;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            text-shadow: 0 0 15px rgba(0, 242, 255, 0.6);
+            letter-spacing: 1.2px;
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+            text-align: center;
         }
 
-        @keyframes boxExplode {
-            0% { transform: scale(1) rotate(0deg); opacity: 1; }
-            40% { transform: scale(1.5) rotate(45deg); opacity: 1; }
-            100% { transform: scale(30) rotate(90deg); opacity: 0; filter: blur(15px); }
+        /* SETINHA FLUTUANTE */
+        .click-hint {
+            font-size: 8px;
+            color: #ff00ff;
+            margin-top: 8px;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: bounceIn 1.5s infinite alternate 2s;
+            text-shadow: 0 0 5px #ff00ff;
         }
 
-        @keyframes revealText {
-            to { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes boxFadeOut {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(8); opacity: 0; filter: blur(4px); }
+        }
+
+        @keyframes revealSmooth {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounceIn {
+            0% { opacity: 0.3; transform: translateY(0); }
+            100% { opacity: 1; transform: translateY(-3px); }
         }
 
         /* -------------------------------------- */
@@ -291,12 +308,13 @@
             </a>
             <button class="btn" onclick="navegar('tech')">Sistema Tech</button>
             
-            <div class="price-box-container">
-                <div class="exploding-box"></div>
+            <div class="price-box-container" onclick="resetBox()">
+                <div class="exploding-box" id="box-element"></div>
                 <div class="price-content">
                     💻 Sites a partir de R$ 150 <br>
                     📈 Projetos personalizados conforme sua necessidade
                 </div>
+                <div class="click-hint">clique aq ↗</div>
             </div>
         </div>
     </div>
@@ -390,6 +408,14 @@
                     window.location.href = "pages/tech.html";
                 }
             }, 500);
+        }
+
+        // Função para resetar a animação da caixa ao clicar
+        function resetBox() {
+            const box = document.getElementById('box-element');
+            box.style.animation = 'none';
+            box.offsetHeight; /* trigger reflow */
+            box.style.animation = null; 
         }
 
         async function chamarWhatsapp(event) {
