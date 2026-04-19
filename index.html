@@ -11,7 +11,6 @@
             margin: 0; 
             padding: 0; 
             box-sizing: border-box; 
-            /* Impede que o usuário selecione textos ou imagens, como num app */
             user-select: none; 
             -webkit-tap-highlight-color: transparent;
         }
@@ -25,7 +24,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* TRAVA A TELA: Impede qualquer rolagem para os lados ou para baixo */
             overflow: hidden; 
             position: fixed; 
         }
@@ -75,7 +73,7 @@
         }
 
         h1 {
-            font-size: 2.5rem; /* Ajustado para caber melhor em telas pequenas */
+            font-size: 2.5rem; 
             font-weight: 900;
             margin-bottom: 40px;
             text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
@@ -90,7 +88,7 @@
         }
 
         .btn {
-            width: 85%; /* Ajustado para ocupar a largura do celular como um app */
+            width: 85%; 
             max-width: 300px;
             padding: 18px;
             background: transparent;
@@ -101,16 +99,19 @@
             text-transform: uppercase;
             text-decoration: none;
             letter-spacing: 2px;
-            transition: 0.3s;
+            transition: all 0.2s ease;
             cursor: pointer;
             outline: none;
+            position: relative;
+            z-index: 11;
         }
 
-        .btn:active { /* Feedback visual ao tocar */
-            background: #00f2ff;
-            color: #000;
+        .btn:active {
+            transform: scale(0.95);
+            background: rgba(0, 242, 255, 0.2);
         }
 
+        /* CORREÇÃO DO PORTAL: Mais rápido e suave */
         .portal {
             position: fixed;
             top: 50%;
@@ -122,11 +123,16 @@
             transform: translate(-50%, -50%);
             z-index: 9999;
             pointer-events: none;
-            transition: width 0.8s cubic-bezier(0.7, 0, 0.3, 1), height 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+            /* Curva de animação ajustada para ser explosiva */
+            transition: width 0.6s cubic-bezier(0.9, 0, 0.1, 1), 
+                        height 0.6s cubic-bezier(0.9, 0, 0.1, 1);
+            will-change: width, height;
         }
     </style>
 </head>
-<body oncontextmenu="return false;"> <div class="grid"></div>
+<body oncontextmenu="return false;">
+
+    <div class="grid"></div>
     <div class="portal" id="portal"></div>
 
     <div class="container">
@@ -150,16 +156,19 @@
     <script>
         function transicao(destino) {
             const p = document.getElementById('portal');
-            p.style.width = '350vw';
-            p.style.height = '350vw';
             
+            // Ativa o portal instantaneamente
+            p.style.width = '400vw';
+            p.style.height = '400vw';
+            
+            // Tempo reduzido para 600ms para a troca ser mais "limpa" e sem delay
             setTimeout(() => {
                 if(destino === 'whats') {
                     window.location.href = "https://wa.me/5538997404945?text=oi%20quero%20um%20site";
                 } else {
                     window.location.href = "pages/tech.html";
                 }
-            }, 800);
+            }, 600);
         }
     </script>
 </body>
