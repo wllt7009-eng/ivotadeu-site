@@ -115,11 +115,11 @@
         
         .btn:active { background: #00f2ff; color: #000; transform: scale(0.95); }
 
-        /* --- NOVO EFEITO DE EXPLOSÃO E PREÇO --- */
+        /* --- AJUSTE NA ANIMAÇÃO DE EXPLOSÃO E FONTE --- */
         .price-box-container {
-            margin-top: 15px;
+            margin-top: 20px;
             position: relative;
-            height: 60px;
+            min-height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -127,32 +127,34 @@
 
         .exploding-box {
             position: absolute;
-            width: 10px; height: 10px;
+            width: 12px; height: 12px;
             background: #00f2ff;
-            box-shadow: 0 0 20px #00f2ff;
-            animation: boxExplode 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            box-shadow: 0 0 30px #00f2ff, 0 0 60px #ff00ff;
+            border-radius: 2px;
+            animation: boxExplode 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .price-content {
             opacity: 0;
-            transform: scale(0.5);
-            animation: revealText 0.5s ease-out 0.8s forwards;
+            transform: translateY(10px) scale(0.9);
+            animation: revealText 0.8s ease-out 1s forwards;
             color: #00f2ff;
-            font-size: 0.75rem;
+            font-size: 0.85rem; /* Um trisquinho maior como solicitado */
+            font-weight: 900;
             line-height: 1.6;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.6);
         }
 
         @keyframes boxExplode {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(4); opacity: 1; border-radius: 50%; }
-            100% { transform: scale(20); opacity: 0; filter: blur(10px); }
+            0% { transform: scale(1) rotate(0deg); opacity: 1; }
+            40% { transform: scale(1.5) rotate(45deg); opacity: 1; }
+            100% { transform: scale(30) rotate(90deg); opacity: 0; filter: blur(15px); }
         }
 
         @keyframes revealText {
-            to { opacity: 1; transform: scale(1); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         /* -------------------------------------- */
@@ -292,7 +294,7 @@
             <div class="price-box-container">
                 <div class="exploding-box"></div>
                 <div class="price-content">
-                    💻 Sites a partir de R$150 <br>
+                    💻 Sites a partir de R$ 150 <br>
                     📈 Projetos personalizados conforme sua necessidade
                 </div>
             </div>
