@@ -131,6 +131,23 @@
         <footer class="footer-nav">
             <a href="../index.html" class="btn-back">REORNAR AO HUB CENTRAL</a>
         </footer>
-    </div>
+    <div id="transition-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; opacity:0; pointer-events:none; transition:opacity 0.5s;"></div>
+
+<script>
+    function voltarMenu() {
+        const overlay = document.getElementById('transition-overlay');
+        overlay.style.opacity = '1';
+        overlay.style.pointerEvents = 'all';
+        setTimeout(() => { window.location.href = "../index.html"; }, 500);
+    }
+
+    // Garante que a página não fique preta se voltar para ela
+    window.onpageshow = function(event) {
+        if (event.persisted) {
+            document.getElementById('transition-overlay').style.opacity = '0';
+        }
+    };
+</script>
+        
 </body>
 </html>
