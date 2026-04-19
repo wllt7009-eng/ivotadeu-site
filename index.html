@@ -71,9 +71,9 @@
         .name { 
             font-size: 14px; 
             letter-spacing: 6px; 
-            color: #ff00ff; 
+            color: #fff; 
             margin-bottom: 10px; 
-            text-shadow: 0 0 8px #ff00ff; 
+            text-shadow: 0 0 8px #00f2ff; 
             font-weight: 900;
             text-transform: uppercase;
         }
@@ -124,20 +124,29 @@
             display: flex; flex-direction: column; align-items: center; gap: 60px;
         }
 
-        .benefits-group { width: 100%; display: flex; flex-direction: column; gap: 40px; }
+        /* --- ESTILO ADAPTADO PARA OS NOVOS CONTEÚDOS --- */
+        .step-intro {
+            text-align: left;
+            width: 100%;
+            margin-bottom: -20px;
+        }
+        .step-intro h2 { font-size: 1.5rem; color: #fff; margin-bottom: 15px; }
+        .step-intro p { font-family: sans-serif; color: #aaa; font-size: 0.9rem; line-height: 1.6; }
+
+        .benefits-group { width: 100%; display: flex; flex-direction: column; gap: 30px; }
         
         .benefit-card { 
             background: rgba(255, 255, 255, 0.03); 
             border: 1px solid rgba(0, 242, 255, 0.15); 
-            padding: 30px; border-radius: 8px; 
+            padding: 25px; border-radius: 8px; 
             text-align: left; position: relative;
-            display: flex; align-items: flex-start; gap: 20px;
+            display: flex; flex-direction: column; gap: 10px;
         }
         
-        .benefit-number { font-size: 3rem; font-weight: 900; color: rgba(255, 0, 255, 0.3); line-height: 1; }
+        .benefit-number { font-size: 1.8rem; font-weight: 900; color: #ff00ff; opacity: 0.8; }
         
-        .benefit-text h3 { color: #00f2ff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-size: 1rem; }
-        .benefit-text p { font-size: 0.85rem; color: #ccc; font-family: sans-serif; line-height: 1.6; }
+        .benefit-text h3 { color: #00f2ff; text-transform: none; letter-spacing: 1px; margin-bottom: 5px; font-size: 1.1rem; }
+        .benefit-text p { font-size: 0.85rem; color: #ccc; font-family: sans-serif; line-height: 1.5; }
 
         .impact-section { text-align: center; }
         .impact-headline { font-size: 1.3rem; line-height: 1.3; font-weight: 900; margin-bottom: 25px; max-width: 450px; margin-left: auto; margin-right: auto; }
@@ -231,7 +240,7 @@
 
     <div class="container">
         <img src="https://i.imgur.com/kS5qJm9.png" alt="Diamante Real" class="diamond-img">
-        <p class="name">Lopes Digital Co.</p>
+        <p class="name">Ivo Tadeu</p>
         <h1>CONSTRUINDO <br> O FUTURO</h1>
         <div class="btn-group">
             <a href="#form-section" style="text-decoration:none; width:100%; display:flex; justify-content:center;">
@@ -242,26 +251,46 @@
     </div>
 
     <div class="section-wrapper">
+        
+        <div class="step-intro">
+            <h2>Como criar um site grátis</h2>
+            <p>Transforme sua ideia em "Estou online agora" com a nossa expertise. Para você que está montando um portfólio ou prestando serviços, siga estas etapas simples para começar.</p>
+        </div>
+
         <div class="benefits-group">
             <div class="benefit-card">
                 <div class="benefit-number">01</div>
                 <div class="benefit-text">
-                    <h3>Design <br>Focado em Vendas</h3>
-                    <p>Criamos uma vitrine impossível de ser ignorada pelo seu público-alvo, alinhando estética neon com psicologia de consumo.</p>
+                    <h3>Escolha um modelo</h3>
+                    <p>Comece a criar seu site ou loja gratuitamente com designs validados.</p>
                 </div>
             </div>
             <div class="benefit-card">
                 <div class="benefit-number">02</div>
                 <div class="benefit-text">
-                    <h3>Engenharia <br>de Conversão</h3>
-                    <p>Desenvolvimento ultra-rápido e otimizado para o Google desde o primeiro dia. Seu site no ar e indexando.</p>
+                    <h3>Estilo Próprio</h3>
+                    <p>Imprima seu estilo adicionando conteúdos, produtos e informações sobre sua empresa.</p>
                 </div>
             </div>
             <div class="benefit-card">
                 <div class="benefit-number">03</div>
                 <div class="benefit-text">
-                    <h3>Lançamento <br>& Escala</h3>
-                    <p>Acompanhamento técnico contínuo para garantir que seu site suporte o crescimento e escale seus resultados.</p>
+                    <h3>Marketing Integrado</h3>
+                    <p>Com as ferramentas certas, sua empresa ganha visibilidade instantânea.</p>
+                </div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-number">04</div>
+                <div class="benefit-text">
+                    <h3>Gestão Unificada</h3>
+                    <p>Gerencie tudo (pedidos, redes sociais) a partir de um único painel em qualquer dispositivo.</p>
+                </div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-number">05</div>
+                <div class="benefit-text">
+                    <h3>Recursos Premium</h3>
+                    <p>Adquira complementos que atendam às necessidades específicas do seu negócio.</p>
                 </div>
             </div>
         </div>
@@ -312,15 +341,11 @@
             }, 500);
         }
 
-        // FUNÇÃO COM O LINK CORRIGIDO E ANIMAÇÕES MANTIDAS
         async function chamarWhatsapp(event) {
             event.preventDefault();
-            
             const nome = document.getElementById('nome_lead').value;
             const zap = document.getElementById('whatsapp_lead').value;
             const email = document.getElementById('email_lead').value;
-            
-            // LINK DA API SHEETBEST CORRETO AGORA
             const LINK_DO_SHEETBEST = "https://api.sheetbest.com/sheets/2f39b228-9d1f-45e0-8dff-c34c14c99763";
 
             try {
@@ -335,14 +360,10 @@
                         "Data": new Date().toLocaleString() 
                     })
                 });
-            } catch (e) {
-                console.error("Erro ao salvar dados");
-            }
+            } catch (e) { console.error("Erro ao salvar dados"); }
 
             const mensagemFinal = `Olá, meu nome é ${nome} e vim pelo seu site. Gostaria de um orçamento!`;
-            const linkZap = `https://wa.me/5538997404945?text=${encodeURIComponent(mensagemFinal)}`;
-            
-            window.open(linkZap, '_blank');
+            window.open(`https://wa.me/5538997404945?text=${encodeURIComponent(mensagemFinal)}`, '_blank');
         }
 
         const icons = ['🏎️', '🍄', '🍌', '⭐', '🐢', '🛸', '👾', '🚀', '⚡', '💻'];
@@ -359,12 +380,10 @@
                 el.style.setProperty('--ex', Math.random() * 100 + 'vw');
                 el.style.setProperty('--ey', Math.random() * 100 + 'vh');
                 el.style.animationDelay = Math.random() * 15 + 's';
-                el.style.left = "0";
-                el.style.top = "0";
+                el.style.left = "0"; el.style.top = "0";
                 container.appendChild(el);
             }
         }
-
         createElements();
 
         window.onpageshow = function(event) {
@@ -376,4 +395,5 @@
         };
     </script>
 </body>
-</html>
+            </html>
+    
