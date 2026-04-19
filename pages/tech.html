@@ -77,19 +77,11 @@
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
             cursor: pointer;
         }
-        .btn-back:hover { 
-            background: #ff00ff; 
-            color: #000; 
-            box-shadow: 0 0 40px #ff00ff; 
-        }
+        .btn-back:hover { background: #ff00ff; color: #000; box-shadow: 0 0 40px #ff00ff; }
 
         #transition-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000;
-            z-index: 9999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease-in-out;
+            background: #000; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.5s;
         }
     </style>
 </head>
@@ -99,14 +91,23 @@
 
     <div class="wrapper">
         <header class="header-tech">
-            <p style="font-size: 10px; color: #ff00ff; letter-spacing: 3px; text-shadow: 0 0 5px #ff00ff;">STATUS: ACESSO AUTORIZADO</p>
-            <h1>O Núcleo da Engenharia</h1>
+            <p style="font-size: 10px; color: #ff00ff; letter-spacing: 3px; text-shadow: 0 0 5px #ff00ff;">STATUS: ONLINE</p>
+            <h1>Soluções Digitais</h1>
         </header>
 
         <div class="section-card">
-            <h2>Pesquisa: A Anatomia Digital</h2>
+            <h2>Estratégia e Conversão</h2>
             <div class="tech-text">
-                Programação não é apenas "fazer sites", é a manipulação de <span class="highlight">Estruturas de Dados</span> e lógica binária aplicada à experiência do usuário (UX). No mundo atual, um site que demora mais de 3 segundos para carregar perde 60% do tráfego. Eu utilizo técnicas de <span class="highlight">Engenharia de Performance</span> para garantir velocidade extrema.
+                Programação não é apenas "fazer sites", é a manipulação de <span class="highlight">Estruturas de Dados</span> focadas em vender. Eu utilizo técnicas de <span class="highlight">Engenharia de Performance</span> para garantir que seu cliente não perca tempo esperando e vá direto para o fechamento.
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>Por que Ivo Lopes?</h2>
+            <div class="tech-text">
+                Desenvolvo sites focados em <span class="highlight">pequenos negócios</span>, seja para o seu mercado, padaria ou para divulgar sua marca na internet. Posso criar desde <span class="highlight">sistemas de pagamento</span> seguros até páginas personalizadas e totalmente animadas, tudo de acordo com o que você preferir. 
+                <br><br>
+                A intenção é simples: <span class="highlight">fazer você ter mais clientes</span> e profissionalizar ainda mais a sua marca perante a concorrência.
             </div>
         </div>
 
@@ -114,20 +115,13 @@
             <h2>Arquiteturas Disponíveis</h2>
             <div class="site-models">
                 <div class="model">
-                    <strong>01. ULTRA-MODERNO (CYBERPUNK)</strong>
-                    <p style="font-size: 0.85rem; color: #aaa;">Design agressivo, focado em impacto visual e tecnologia. Ideal para gamers e marcas inovadoras.</p>
+                    <strong>01. ULTRA-MODERNO</strong>
+                    <p style="font-size: 0.85rem; color: #aaa;">Design agressivo, focado em impacto visual e tecnologia.</p>
                 </div>
                 <div class="model" style="border-color: #00f2ff; background: rgba(0, 242, 255, 0.05);">
                     <strong>02. CORPORATIVO ELITE</strong>
-                    <p style="font-size: 0.85rem; color: #aaa;">Minimalismo luxuoso e autoridade para fechar negócios de alto ticket.</p>
+                    <p style="font-size: 0.85rem; color: #aaa;">Minimalismo luxuoso focado em autoridade e confiança.</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="section-card">
-            <h2>Por que Ivo Lopes?</h2>
-            <div class="tech-text">
-                Domino a integração entre design futurista e funcionalidade real. O esforço constante e a visão tecnológica garantem que seu projeto seja o <span class="highlight">topo do mercado</span>.
             </div>
         </div>
 
@@ -141,18 +135,14 @@
             const overlay = document.getElementById('transition-overlay');
             overlay.style.opacity = '1';
             overlay.style.pointerEvents = 'all';
-            setTimeout(() => { 
-                window.location.href = "../index.html"; 
-            }, 500);
+            setTimeout(() => { window.location.href = "../index.html"; }, 500);
         }
 
         window.onpageshow = function(event) {
-            if (event.persisted || true) {
-                const overlay = document.getElementById('transition-overlay');
-                if(overlay) {
-                    overlay.style.opacity = '0';
-                    overlay.style.pointerEvents = 'none';
-                }
+            const overlay = document.getElementById('transition-overlay');
+            if(overlay) {
+                overlay.style.opacity = '0';
+                overlay.style.pointerEvents = 'none';
             }
         };
     </script>
