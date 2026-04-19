@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     
     <style>
-        /* FUNDO PRETO TOTAL */
+        /* GARANTE O FUNDO PRETO DESDE O PRIMEIRO MILISSEGUNDO */
         html, body {
             background-color: #000 !important;
             margin: 0;
@@ -25,12 +25,12 @@
             display: flex; 
             flex-direction: column;
             align-items: center; 
-            justify-content: flex-start; 
-            padding-top: 10vh; 
+            justify-content: flex-start; /* ALINHA AO TOPO NATURALMENTE */
+            padding-top: 8vh; /* DISTÂNCIA DO TOPO QUE VOCÊ QUERIA */
             position: fixed; 
         }
         
-        /* GRADE TRON */
+        /* GRADE TRON (CAMADA 1) */
         .grid { 
             position: absolute; 
             width: 400%; height: 400%; 
@@ -40,23 +40,5 @@
             background-size: 60px 60px; 
             transform: perspective(500px) rotateX(75deg); 
             top: -120%; 
-            animation: moveGrid 12s linear infinite; 
-            z-index: 1;
-            mask-image: linear-gradient(to top, rgba(0,0,0,1) 15%, rgba(0,0,0,0) 70%);
-            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 15%, rgba(0,0,0,0) 70%);
-            pointer-events: none;
-        }
-
-        @keyframes moveGrid { 
-            from { transform: perspective(500px) rotateX(75deg) translateY(0); } 
-            to { transform: perspective(500px) rotateX(75deg) translateY(60px); } 
-        }
-
-        .container { position: relative; z-index: 100; text-align: center; padding: 20px; width: 100%; }
-        
-        /* NOVA ARTE HACKER (SEM CORAÇÃO) */
-        .hacker-art { 
-            color: #00f2ff; 
-            font-family: monospace; 
-            font
+            animation: moveGrid
             
