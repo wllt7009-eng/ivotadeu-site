@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Lopes | Tech Vision</title>
+    <title>Lopes Digital Co. | Tech Vision</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
     
     <style>
@@ -28,7 +28,7 @@
             position: fixed; 
         }
         
-        /* GRADE MELHORADA COM PROFUNDIDADE (STYLE TRON) */
+        /* GRADE COM PROFUNDIDADE (STYLE TRON) */
         .grid { 
             position: absolute; 
             width: 400%; 
@@ -41,7 +41,6 @@
             top: -120%; 
             animation: moveGrid 12s linear infinite; 
             z-index: 0;
-            /* Efeito de desfoque no horizonte para não parecer estranho */
             mask-image: linear-gradient(to top, rgba(0,0,0,1) 15%, rgba(0,0,0,0) 70%);
             -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 15%, rgba(0,0,0,0) 70%);
         }
@@ -62,7 +61,16 @@
             text-shadow: 0 0 10px #00f2ff;
         }
         
-        .name { font-size: 10px; letter-spacing: 5px; color: #ff00ff; margin-bottom: 15px; text-shadow: 0 0 5px #ff00ff; }
+        /* NOVO NOME AMPLIADO */
+        .name { 
+            font-size: 14px; 
+            letter-spacing: 6px; 
+            color: #ff00ff; 
+            margin-bottom: 10px; 
+            text-shadow: 0 0 8px #ff00ff; 
+            font-weight: 900;
+            text-transform: uppercase;
+        }
         
         h1 { 
             font-size: 2.2rem; 
@@ -133,7 +141,7 @@
      \/  
   TECH_LEAD
         </div>
-        <p class="name">IVO TADEU ALMEIDA LOPES</p>
+        <p class="name">Lopes Digital Co.</p>
         <h1>CONSTRUINDO <br> O FUTURO</h1>
         <div class="btn-group">
             <button class="btn" onclick="navegar('whats')">Quero um Site</button>
