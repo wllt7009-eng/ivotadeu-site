@@ -265,72 +265,73 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.5s;
         }
-
         /* --- NOVA SEÇÃO DE PROJETOS --- */
-        .projects-section {
-            width: 100%;
-            padding: 80px 20px;
-            z-index: 20;
-            position: relative;
-            text-align: center;
-        }
+.projects-section {
+    width: 100%;
+    padding: 80px 20px;
+    z-index: 20;
+    position: relative;
+    text-align: center;
+}
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            width: 100%;
-            max-width: 1000px;
-            margin: 30px auto 0;
-        }
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto 0;
+}
 
-        .project-card {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            aspect-ratio: 16 / 9;
-            border: 1px solid rgba(0, 242, 255, 0.3);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-            cursor: pointer;
-        }
+.project-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+    cursor: pointer;
+}
 
-        .project-card.reveal {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* Classe que ativa a animação ao rolar */
+.project-card.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
 
-        .project-overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s ease;
-        }
+.project-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s ease;
+}
 
-        .btn-view {
-            padding: 12px 20px;
-            border: 2px solid #00f2ff;
-            color: #00f2ff;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            background: transparent;
-        }
+.btn-view {
+    padding: 12px 20px;
+    border: 2px solid #00f2ff;
+    color: #00f2ff;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    background: transparent;
+}
 
-        .project-card:hover img { transform: scale(1.1); }
-        .project-card:hover .project-overlay { opacity: 1; }
+/* Efeitos de Hover/Toque */
+.project-card:hover img { transform: scale(1.1); }
+.project-card:hover .project-overlay { opacity: 1; }
         
     </style>
 </head>
@@ -396,27 +397,27 @@
             </div>
         </div>
     </div>
-
     <section class="projects-section">
-        <button class="btn" style="cursor: default; animation: none; width: auto; padding: 15px 30px;">
-            Projetos que já desenvolvi
-        </button>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="89ad273cfcabdeba8901292427310d93.jpg">
-                <div class="project-overlay"><button class="btn-view">Ver Detalhes</button></div>
-            </div>
-            <div class="project-card">
-                <img src="IMG_20260419_234142.jpg">
-                <div class="project-overlay"><button class="btn-view">Ver Detalhes</button></div>
-            </div>
-            <div class="project-card">
-                <img src="c2ebb795411eab761d324593fbcae3d3.jpg">
-                <div class="project-overlay"><button class="btn-view">Ver Detalhes</button></div>
-            </div>
+    <button class="btn" style="cursor: default; animation: none; width: auto; padding: 15px 30px;">
+        Projetos que já desenvolvi
+    </button>
+    
+    <div class="projects-grid">
+        <div class="project-card">
+            <img src="89ad273cfcabdeba8901292427310d93.jpg">
+            <div class="project-overlay"><button class="btn-view">Ver Detalhes</button></div>
         </div>
+        <div class="project-card">
+            <img src="IMG_20260419_234142.jpg">
+            <div class="project-overlay"><button class="btn-view">Ver Detalhes</button></div>
+        </div>
+        <div class="project-card">
+            <img src="c2ebb795411eab761d324593fbcae3d3.jpg">
+            <div class="project-overlay"><button class="btn-view">Ver Detalhes</button></div>
+        </div>
+    </div>
     </section>
+    
 
     <footer>&copy; 2026 LOPES DIGITAL CO. // UBAÍ - MG</footer>
 
@@ -432,27 +433,14 @@
             }
         }
 
-        // AUTO-OPEN DO BAÚ APÓS EXATAMENTE 2.5 SEGUNDOS (2500ms)
+        // AUTO-OPEN DO BAÚ APÓS EXATAMENTE 2 SEGUNDOS (2000ms)
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const txt = document.getElementById('price-txt');
                 if (!txt.classList.contains('show')) {
                     togglePrice();
                 }
-            }, 2500); 
-        });
-
-        // Ativa a animação dos projetos ao rolar a página
-        const observerProjetos = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal');
-                }
-            });
-        }, { threshold: 0.2 });
-
-        document.querySelectorAll('.project-card').forEach(card => {
-            observerProjetos.observe(card);
+            }, 2000); 
         });
 
         function navegar(destino) {
@@ -489,4 +477,26 @@
                 el.style.setProperty('--ey', Math.random() * 100 + 'vh');
                 el.style.animationDelay = Math.random() * 15 + 's';
                 el.style.left = "0"; el.style.top = "0";
-                container.appendChi
+                container.appendChild(el);
+            }
+        }
+        createElements();
+        window.onpageshow = () => {
+            const overlay = document.getElementById('transition-overlay');
+            if(overlay) { overlay.style.opacity = '0'; overlay.style.pointerEvents = 'none'; }
+        };
+    </script>// Ativa a animação dos projetos ao rolar a página
+const observerProjetos = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+        }
+    }
+}, { threshold: 0.2 })
+
+document.querySelectorAll('.project-card').forEach(card => {
+    observerProjetos.observe(card);
+}
+    
+</body>
+</html>
