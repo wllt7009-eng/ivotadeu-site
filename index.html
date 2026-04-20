@@ -191,7 +191,6 @@
         .step-intro p { font-family: sans-serif; color: #aaa; font-size: 0.9rem; line-height: 1.6; }
 
         .benefits-group { width: 100%; display: flex; flex-direction: column; gap: 30px; }
-        
         .benefit-card { 
             background: rgba(255, 255, 255, 0.03); 
             border: 1px solid rgba(0, 242, 255, 0.15); 
@@ -338,7 +337,6 @@
             </div>
             <div class="benefit-card">
                 <div class="benefit-number">02</div>
-                <div class="benefit-number">02</div>
                 <div class="benefit-text"><h3>Visibilidade 24h</h3><p>Seu negócio aberto para o mundo o tempo todo, permitindo que novos clientes te encontrem até enquanto você dorme.</p></div>
             </div>
             <div class="benefit-card">
@@ -382,24 +380,23 @@
                 <p>Gerencie tudo (pedidos, redes sociais) a partir de um único painel em qualquer dispositivo.</p>
             </div>
         </div>
-
         <div class="faq-section">
             <h2>Perguntas Frequentes</h2>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Qual o valor do site? <span class="faq-icon">+</span></div>
-                <div class="faq-answer">Trabalhamos com projetos a partir de R$ 150, variando de acordo com a complexidade e funcionalidades solicitadas.</div>
+                <div class="faq-answer">Os projetos são personalizados e iniciam a partir de R$ 150.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Qual o prazo de entrega? <span class="faq-icon">+</span></div>
-                <div class="faq-answer">O prazo médio é de 5 a 10 dias úteis, dependendo do envio do material pelo cliente.</div>
+                <div class="faq-answer">O prazo varia em torno de 3 a 7 dias, dependendo da complexidade do site que for criado.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Preciso fornecer o conteúdo? <span class="faq-icon">+</span></div>
-                <div class="faq-answer">Sim, textos e fotos são fornecidos por você, mas eu te auxilio a organizar tudo da melhor forma para conversão.</div>
+                <div class="faq-answer">Sim, você precisará fornecer o conteúdo textual e visual do seu site (textos, imagens, vídeos, etc.).</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFaq(this)">Oferecem suporte após a entrega? <span class="faq-icon">+</span></div>
-                <div class="faq-answer">Sim! Dou suporte total para garantir que seu site esteja sempre online e funcionando perfeitamente.</div>
+                <div class="faq-answer">Sim, ofereço suporte total após a entrega para garantir que tudo esteja funcionando corretamente.</div>
             </div>
         </div>
 
@@ -419,10 +416,19 @@
             }
         }
 
-        // FUNÇÃO PARA O FAQ
+        // FUNÇÃO PARA ABRIR/FECHAR FAQ E MOSTRAR RESPOSTAS
         function toggleFaq(element) {
             const answer = element.nextElementSibling;
             const icon = element.querySelector('.faq-icon');
+            
+            // Fecha outros abertos (opcional, para ficar mais limpo)
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('open');
+                    item.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate');
+                }
+            });
+
             answer.classList.toggle('open');
             icon.classList.toggle('rotate');
         }
@@ -449,4 +455,35 @@
             const email = document.getElementById('email_lead').value;
             
             fetch("https://api.sheetbest.com/sheets/2f39b228-9d1f-45e0-8dff-c34c14c99763", {
-                method: "POST", mode: "cors", headers: { "Content
+                method: "POST", mode: "cors", headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "Nome": nome, "WhatsApp": zap, "Email": email, "Data": new Date().toLocaleString() })
+            });
+            
+            window.open(`https://wa.me/5538997404945?text=Olá, meu nome é ${nome} e quero um orçamento!`, '_blank');
+        }
+
+        const icons = ['🏎️', '🍄', '🍌', '⭐', '🐢', '🛸', '👾', '🚀', '⚡', '💻'];
+        const container = document.getElementById('bg-elements');
+        function createElements() {
+            container.innerHTML = '';
+            for (let i = 0; i < 15; i++) {
+                const el = document.createElement('div');
+                el.className = 'b-element';
+                el.innerText = icons[Math.floor(Math.random() * icons.length)];
+                el.style.setProperty('--sx', Math.random() * 100 + 'vw');
+                el.style.setProperty('--sy', Math.random() * 100 + 'vh');
+                el.style.setProperty('--ex', Math.random() * 100 + 'vw');
+                el.style.setProperty('--ey', Math.random() * 100 + 'vh');
+                el.style.animationDelay = Math.random() * 15 + 's';
+                el.style.left = "0"; el.style.top = "0";
+                container.appendChild(el);
+            }
+        }
+        createElements();
+        window.onpageshow = () => {
+            const overlay = document.getElementById('transition-overlay');
+            if(overlay) { overlay.style.opacity = '0'; overlay.style.pointerEvents = 'none'; }
+        };
+    </script>
+</body>
+</html>
