@@ -344,6 +344,16 @@
             }
         }
 
+        // AUTO-OPEN DO BAÚ APÓS 2.5 SEGUNDOS
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const txt = document.getElementById('price-txt');
+                if (!txt.classList.contains('show')) {
+                    togglePrice();
+                }
+            }, 2500);
+        });
+
         function navegar(destino) {
             const overlay = document.getElementById('transition-overlay');
             overlay.style.opacity = '1'; overlay.style.pointerEvents = 'all';
