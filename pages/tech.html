@@ -29,9 +29,33 @@
         
         .wrapper { max-width: 800px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 1; }
         
-        .header-tech { border-left: 5px solid #00f2ff; padding-left: 20px; margin-bottom: 60px; box-shadow: -10px 0 20px rgba(0, 242, 255, 0.2); }
+        .header-tech { border-left: 5px solid #00f2ff; padding-left: 20px; margin-bottom: 30px; box-shadow: -10px 0 20px rgba(0, 242, 255, 0.2); }
         .header-tech h1 { font-size: 2.5rem; text-transform: uppercase; color: #fff; text-shadow: 0 0 15px #00f2ff; }
         
+        /* Estilo para sua foto pessoal */
+        .profile-area { text-align: center; margin-bottom: 60px; position: relative; }
+        .profile-img { 
+            width: 120px; 
+            height: 120px; 
+            border-radius: 50%; 
+            border: 2px solid #00f2ff; 
+            object-fit: cover; 
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+            /* Filtro sutil para combinar com o tema escuro/neon */
+            filter: brightness(0.9) contrast(1.1); 
+        }
+        .profile-area::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: #ff00ff;
+            box-shadow: 0 0 10px #ff00ff;
+        }
+
         .section-card { 
             background: rgba(255,255,255,0.03); 
             border: 1px solid rgba(0,242,255,0.2); 
@@ -101,6 +125,10 @@
             <p style="font-size: 10px; color: #ff00ff; letter-spacing: 3px; text-shadow: 0 0 5px #ff00ff;">STATUS: ONLINE</p>
             <h1>Soluções Digitais</h1>
         </header>
+
+        <div class="profile-area">
+            <img src="IMG_20250207_003738.jpg" alt="Ivo Lopes" class="profile-img">
+        </div>
 
         <div class="section-card">
             <h2>Por que Ivo Lopes?</h2>
