@@ -188,5 +188,77 @@
                     <p>Espaço personalizado para prestadores de serviço mostrarem seu trabalho com estilo.</p>
                 </div>
                 <div class="model" style="border-color: #00f2ff;">
-                    <strong>06
-                        
+                    <strong>06. Link Tree Customizado</strong>
+                    <p>Central de links exclusiva para sua bio, muito superior aos modelos genéricos do mercado.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>Engenharia de Performance</h2>
+            <div class="tech-text">
+                Não entrego apenas um "rostinho bonito". Meus projetos são otimizados em <span class="highlight">tempo de carregamento</span> e lógica de conversão, garantindo que sua marca seja encontrada e respeitada na rede.
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>The Core Engine (Bastidores)</h2>
+            <div class="tech-text">
+                Minha montagem segue o conceito de <span class="highlight">Clean Code</span>. O essencial da programação não é apenas fazer funcionar, mas construir uma base sólida e escalável.
+                <br><br>
+                Uso <span class="highlight">HTML5 Semântico</span> para o Google te encontrar mais fácil, <span class="highlight">CSS Moderno</span> para garantir que seu site seja lindo em qualquer tela e <span class="highlight">JavaScript Puro</span> para animações que não travam o celular do seu cliente.
+            </div>
+
+            <div class="code-showcase">
+                <img src="60c9a9f93313d3bbd6f624a8214df406.jpg" class="code-img" alt="Notebook Setup">
+                <img src="59ee4047d303d7ccf7d9cd16fc3d864c.jpg" class="code-img" alt="Development Code">
+            </div>
+
+            <div class="tech-text" style="font-size: 0.9rem; border-left: 2px solid #ff00ff; padding-left: 15px;">
+                Cada tag é pensada para a <span class="highlight">Experiência do Usuário (UX)</span>. Sou caprichoso na organização dos arquivos e na compressão de dados, resultando em sites que carregam em menos de 2 segundos. Programação é a arte de traduzir seu negócio para a linguagem do futuro.
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>Projetos Prontos</h2>
+            <div class="tech-grid">
+                <div class="tech-project-card"><img src="89ad273cfcabdeba8901292427310d93.jpg"></div>
+                <div class="tech-project-card"><img src="IMG_20260419_234142.jpg"></div>
+                <div class="tech-project-card"><img src="c2ebb795411eab761d324593fbcae3d3.jpg"></div>
+            </div>
+        </div>
+
+        <footer class="footer-nav">
+            <a onclick="voltarMenu()" class="btn-back">RETORNAR AO HUB CENTRAL</a>
+        </footer>
+    </div>
+
+    <script>
+        function voltarMenu() {
+            const overlay = document.getElementById('transition-overlay');
+            overlay.style.opacity = '1';
+            overlay.style.pointerEvents = 'all';
+            setTimeout(() => { window.location.href = "../index.html"; }, 500);
+        }
+
+        // Observer para as fotos aparecerem na rolagem
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('reveal'); }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.tech-project-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        window.onpageshow = function(event) {
+            const overlay = document.getElementById('transition-overlay');
+            if(overlay) {
+                overlay.style.opacity = '0';
+                overlay.style.pointerEvents = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
