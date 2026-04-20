@@ -239,7 +239,7 @@
             cursor: pointer; transition: 0.3s;
         }
 
-        /* NOVA SEÇÃO DE PROJETOS */
+        /* SEÇÃO DE PROJETOS NO FINAL */
         .projects-section {
             width: 100%;
             padding: 80px 20px;
@@ -248,9 +248,7 @@
             text-align: center;
         }
 
-        .projects-title {
-            margin-bottom: 50px;
-        }
+        .projects-title { margin-bottom: 50px; }
 
         .projects-grid {
             display: grid;
@@ -273,10 +271,7 @@
             cursor: pointer;
         }
 
-        .project-card.reveal {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .project-card.reveal { opacity: 1; transform: translateY(0); }
 
         .project-card img {
             width: 100%;
@@ -287,16 +282,11 @@
 
         .project-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
         }
 
         .btn-view {
@@ -311,14 +301,8 @@
             background: transparent;
         }
 
-        /* EFEITO HOVER */
-        .project-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
+        .project-card:hover img { transform: scale(1.1); }
+        .project-card:hover .project-overlay { opacity: 1; }
         
         footer {
             position: relative;
@@ -415,25 +399,18 @@
         <div class="projects-title">
             <button class="btn" style="cursor: default; animation: none;">Projetos que já desenvolvi</button>
         </div>
-        
         <div class="projects-grid">
             <div class="project-card">
-                <img src="89ad273cfcabdeba8901292427310d93.jpg" alt="Projeto 1">
-                <div class="project-overlay">
-                    <button class="btn-view">Ver Detalhes</button>
-                </div>
+                <img src="89ad273cfcabdeba8901292427310d93.jpg">
+                <div class="project-overlay"><button class="btn-view">Ver Detalhes</button></div>
             </div>
             <div class="project-card">
-                <img src="IMG_20260419_234142.jpg" alt="Projeto 2">
-                <div class="project-overlay">
-                    <button class="btn-view">Ver Detalhes</button>
-                </div>
+                <img src="IMG_20260419_234142.jpg">
+                <div class="project-overlay"><button class="btn-view">Ver Detalhes</button></div>
             </div>
             <div class="project-card">
-                <img src="c2ebb795411eab761d324593fbcae3d3.jpg" alt="Projeto 3">
-                <div class="project-overlay">
-                    <button class="btn-view">Ver Detalhes</button>
-                </div>
+                <img src="c2ebb795411eab761d324593fbcae3d3.jpg">
+                <div class="project-overlay"><button class="btn-view">Ver Detalhes</button></div>
             </div>
         </div>
     </section>
@@ -452,29 +429,23 @@
             }
         }
 
-        // AUTO-OPEN DO BAÚ APÓS EXATAMENTE 2 SEGUNDOS (2000ms)
+        // AUTO-OPEN DO BAÚ APÓS EXATAMENTE 2.5 SEGUNDOS (2500ms)
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const txt = document.getElementById('price-txt');
                 if (!txt.classList.contains('show')) {
                     togglePrice();
                 }
-            }, 2000); 
+            }, 2500); 
         });
 
-        // ANIMAÇÃO DE APARECER PROJETOS AO ROLAR A PÁGINA
-        const observerOptions = { threshold: 0.2 };
+        // REVEAL DOS PROJETOS
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('reveal');
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
+        }, { threshold: 0.2 });
+        document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
 
         function navegar(destino) {
             const overlay = document.getElementById('transition-overlay');
@@ -487,12 +458,10 @@
             const nome = document.getElementById('nome_lead').value;
             const zap = document.getElementById('whatsapp_lead').value;
             const email = document.getElementById('email_lead').value;
-            
             fetch("https://api.sheetbest.com/sheets/2f39b228-9d1f-45e0-8dff-c34c14c99763", {
                 method: "POST", mode: "cors", headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ "Nome": nome, "WhatsApp": zap, "Email": email, "Data": new Date().toLocaleString() })
             });
-            
             window.open(`https://wa.me/5538997404945?text=Olá, meu nome é ${nome} e quero um orçamento!`, '_blank');
         }
 
@@ -505,4 +474,14 @@
                 el.className = 'b-element';
                 el.innerText = icons[Math.floor(Math.random() * icons.length)];
                 el.style.setProperty('--sx', Math.random() * 100 + 'vw');
-            
+                el.style.setProperty('--sy', Math.random() * 100 + 'vh');
+                el.style.setProperty('--ex', Math.random() * 100 + 'vw');
+                el.style.setProperty('--ey', Math.random() * 100 + 'vh');
+                el.style.animationDelay = Math.random() * 15 + 's';
+                el.style.left = "0"; el.style.top = "0";
+                container.appendChild(el);
+            }
+        }
+        createElements();
+        window.onpageshow = () => {
+            const overlay = document.getElementByI
