@@ -138,11 +138,7 @@
             z-index: 1;
         }
 
-        .exploding-box.active {
-            transform: scale(6); 
-            opacity: 0;
-            filter: blur(4px);
-        }
+        .exploding-box.active { transform: scale(6); opacity: 0; filter: blur(4px); }
 
         .price-content {
             opacity: 0;
@@ -159,10 +155,7 @@
             z-index: 2;
         }
 
-        .price-content.show {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .price-content.show { opacity: 1; transform: scale(1); }
 
         .click-hint {
             font-size: 8px;
@@ -170,7 +163,6 @@
             color: #00f2ff;
             margin-top: 10px;
             letter-spacing: 1.5px;
-            transition: 0.3s;
             animation: bounceIn 1.5s infinite alternate;
             text-shadow: 0 0 5px #00f2ff;
             text-transform: uppercase;
@@ -259,15 +251,26 @@
             margin-top: auto;
         }
 
+        .background-elements { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+        .b-element { position: absolute; font-size: 24px; opacity: 0; animation: floatElement 15s linear infinite; }
+
+        @keyframes floatElement {
+            0% { transform: translate(var(--sx), var(--sy)) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.3; }
+            80% { opacity: 0.3; }
+            100% { transform: translate(var(--ex), var(--ey)) rotate(360deg); opacity: 0; }
+        }
+
         #transition-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.5s;
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
     <div class="grid"></div>
     <div id="transition-overlay"></div>
+    <div class="background-elements" id="bg-elements"></div>
 
     <div class="container">
         <img src="https://i.imgur.com/kS5qJm9.png" alt="Diamante Real" class="diamond-img">
@@ -298,31 +301,19 @@
         <div class="benefits-group">
             <div class="benefit-card">
                 <div class="benefit-number">01</div>
-                <div class="benefit-text">
-                    <h3>Escolha um modelo</h3>
-                    <p>Comece a criar seu site ou loja gratuitamente com designs validados.</p>
-                </div>
+                <div class="benefit-text"><h3>Escolha um modelo</h3><p>Comece a criar seu site ou loja gratuitamente com designs validados.</p></div>
             </div>
             <div class="benefit-card">
                 <div class="benefit-number">02</div>
-                <div class="benefit-text">
-                    <h3>Estilo Próprio</h3>
-                    <p>Imprima seu estilo adicionando conteúdos, produtos e informações sobre sua empresa.</p>
-                </div>
+                <div class="benefit-text"><h3>Estilo Próprio</h3><p>Imprima seu estilo adicionando conteúdos, produtos e informações sobre sua empresa.</p></div>
             </div>
             <div class="benefit-card">
                 <div class="benefit-number">03</div>
-                <div class="benefit-text">
-                    <h3>Marketing Integrado</h3>
-                    <p>Com as ferramentas certas, sua empresa ganha visibilidade instantânea.</p>
-                </div>
+                <div class="benefit-text"><h3>Marketing Integrado</h3><p>Com as ferramentas certas, sua empresa ganha visibilidade instantânea.</p></div>
             </div>
             <div class="benefit-card">
                 <div class="benefit-number">04</div>
-                <div class="benefit-text">
-                    <h3>Gestão Unificada</h3>
-                    <p>Gerencie tudo (pedidos, redes sociais) a partir de um único painel em qualquer dispositivo.</p>
-                </div>
+                <div class="benefit-text"><h3>Gestão Unificada</h3><p>Gerencie tudo (pedidos, redes sociais) a partir de um único painel em qualquer dispositivo.</p></div>
             </div>
         </div>
 
@@ -332,6 +323,7 @@
                 <form onsubmit="chamarWhatsapp(event)">
                     <div class="input-group"><label>Seu Nome <span>*</span></label><input type="text" id="nome_lead" class="form-input" placeholder="João Silva" required></div>
                     <div class="input-group"><label>WhatsApp <span>*</span></label><input type="tel" id="whatsapp_lead" class="form-input" placeholder="(31) 99999-9999" required></div>
+                    <div class="input-group"><label>E-mail (opcional)</label><input type="email" id="email_lead" class="form-input" placeholder="seu@email.com"></div>
                     <button type="submit" class="btn-whatsapp">Chamar no WhatsApp agora</button>
                 </form>
             </div>
@@ -358,11 +350,42 @@
             setTimeout(() => { window.location.href = (destino === 'tech') ? "pages/tech.html" : "#"; }, 500);
         }
 
-        function chamarWhatsapp(event) {
+        async function chamarWhatsapp(event) {
             event.preventDefault();
             const nome = document.getElementById('nome_lead').value;
+            const zap = document.getElementById('whatsapp_lead').value;
+            const email = document.getElementById('email_lead').value;
+            
+            fetch("https://api.sheetbest.com/sheets/2f39b228-9d1f-45e0-8dff-c34c14c99763", {
+                method: "POST", mode: "cors", headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "Nome": nome, "WhatsApp": zap, "Email": email, "Data": new Date().toLocaleString() })
+            });
+            
             window.open(`https://wa.me/5538997404945?text=Olá, meu nome é ${nome} e quero um orçamento!`, '_blank');
         }
+
+        const icons = ['🏎️', '🍄', '🍌', '⭐', '🐢', '🛸', '👾', '🚀', '⚡', '💻'];
+        const container = document.getElementById('bg-elements');
+        function createElements() {
+            container.innerHTML = '';
+            for (let i = 0; i < 15; i++) {
+                const el = document.createElement('div');
+                el.className = 'b-element';
+                el.innerText = icons[Math.floor(Math.random() * icons.length)];
+                el.style.setProperty('--sx', Math.random() * 100 + 'vw');
+                el.style.setProperty('--sy', Math.random() * 100 + 'vh');
+                el.style.setProperty('--ex', Math.random() * 100 + 'vw');
+                el.style.setProperty('--ey', Math.random() * 100 + 'vh');
+                el.style.animationDelay = Math.random() * 15 + 's';
+                el.style.left = "0"; el.style.top = "0";
+                container.appendChild(el);
+            }
+        }
+        createElements();
+        window.onpageshow = () => {
+            const overlay = document.getElementById('transition-overlay');
+            if(overlay) { overlay.style.opacity = '0'; overlay.style.pointerEvents = 'none'; }
+        };
     </script>
 </body>
 </html>
