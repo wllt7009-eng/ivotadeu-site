@@ -88,7 +88,7 @@
             line-height: 1.1; 
         }
         
-        .btn-group { display: flex; flex-direction: column; gap: 20px; align-items: center; width: 100%; position: relative; z-index: 100; }
+        .btn-group { display: flex; flex-direction: column; gap: 20px; align-items: center; width: 100%; }
         
         .btn { 
             width: 85%; 
@@ -124,7 +124,6 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            z-index: 150;
         }
 
         .exploding-box {
@@ -240,71 +239,86 @@
             cursor: pointer; transition: 0.3s;
         }
 
-        /* --- SEÇÃO DE PROJETOS NO FINAL --- */
-        .portfolio-final {
+        /* NOVA SEÇÃO DE PROJETOS */
+        .projects-section {
             width: 100%;
-            max-width: 800px;
             padding: 80px 20px;
-            text-align: center;
             z-index: 20;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
+            position: relative;
+            text-align: center;
+        }
+
+        .projects-title {
+            margin-bottom: 50px;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .project-item {
+        .project-card {
             position: relative;
-            border-radius: 12px;
+            border-radius: 15px;
             overflow: hidden;
-            border: 2px solid rgba(0, 242, 255, 0.2);
             aspect-ratio: 16 / 9;
+            border: 1px solid rgba(0, 242, 255, 0.3);
             opacity: 0;
-            transform: translateY(20px);
-            transition: 0.5s;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
             cursor: pointer;
         }
 
-        .project-item.visible { opacity: 1; transform: translateY(0); }
+        .project-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        .project-item img {
-            width: 100%; height: 100%;
+        .project-card img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s ease;
         }
 
         .project-overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: 0.4s;
+            transition: opacity 0.3s ease;
         }
 
-        .project-overlay span {
-            border: 1px solid #00f2ff;
-            color: #00f2ff;
+        .btn-view {
             padding: 12px 20px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
+            border: 2px solid #00f2ff;
+            color: #00f2ff;
+            font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            letter-spacing: 2px;
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            background: transparent;
         }
 
-        /* HOVER/TOUCH */
-        .project-item:hover img, .project-item:active img { transform: scale(1.15); }
-        .project-item:hover .project-overlay, .project-item:active .project-overlay { opacity: 1; }
+        /* EFEITO HOVER */
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
         
         footer {
             position: relative;
@@ -349,7 +363,7 @@
             </a>
             <button class="btn" onclick="navegar('tech')">Sistema Tech</button>
             
-            <div class="price-box-container" id="bau-click" onclick="togglePrice()">
+            <div class="price-box-container" onclick="togglePrice()">
                 <div class="exploding-box" id="box-element"></div>
                 <div class="price-content" id="price-txt">
                     💻 Sites a partir de R$ 150 <br>
@@ -363,7 +377,7 @@
     <div class="section-wrapper">
         <div class="step-intro">
             <h2>Seu negócio está perdendo clientes por não ter um site?</h2>
-            <p>Hoje em dia, a maioria das pessoas pesquisa antes de comprar. Sem um site profissional, seu negócio perde credibilidade e oportunidades todos os dias.</p>
+            <p>Hoje em dia, a maioria das pessoas pesquisa antes de comprar. Sem um site profissional, seu negócio perde credibilidade e oportunidades todos os dias. Eu crio sites modernos, rápidos e pensados para atrair clientes de verdade.</p>
         </div>
         <div class="benefits-group">
             <div class="benefit-card">
@@ -372,7 +386,15 @@
             </div>
             <div class="benefit-card">
                 <div class="benefit-number">02</div>
-                <div class="benefit-text"><h3>Visibilidade 24h</h3><p>Seu negócio aberto para o mundo o tempo todo.</p></div>
+                <div class="benefit-text"><h3>Visibilidade 24h</h3><p>Seu negócio aberto para o mundo o tempo todo, permitindo que novos clientes te encontrem até enquanto você dorme.</p></div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-number">03</div>
+                <div class="benefit-text"><h3>Design Exclusivo</h3><p>Nada de modelos genéricos. Desenvolvo uma identidade visual que reflete a essência única da sua marca.</p></div>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-number">04</div>
+                <div class="benefit-text"><h3>Foco em Conversão</h3><p>Sites leves e estratégicos, criados especificamente para transformar visitantes em mensagens no seu WhatsApp.</p></div>
             </div>
         </div>
 
@@ -382,30 +404,39 @@
                 <form onsubmit="chamarWhatsapp(event)">
                     <div class="input-group"><label>Seu Nome <span>*</span></label><input type="text" id="nome_lead" class="form-input" placeholder="João Silva" required></div>
                     <div class="input-group"><label>WhatsApp <span>*</span></label><input type="tel" id="whatsapp_lead" class="form-input" placeholder="(38) 99999-9999" required></div>
+                    <div class="input-group"><label>E-mail (opcional)</label><input type="email" id="email_lead" class="form-input" placeholder="seu@email.com"></div>
                     <button type="submit" class="btn-whatsapp">Chamar no WhatsApp agora</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <div class="portfolio-final">
-        <button class="btn" style="animation: none; margin-bottom: 20px;">Projetos que já desenvolvi</button>
+    <section class="projects-section">
+        <div class="projects-title">
+            <button class="btn" style="cursor: default; animation: none;">Projetos que já desenvolvi</button>
+        </div>
         
         <div class="projects-grid">
-            <div class="project-item">
-                <img src="89ad273cfcabdeba8901292427310d93.jpg" alt="Projeto">
-                <div class="project-overlay"><span>Ver Detalhes</span></div>
+            <div class="project-card">
+                <img src="89ad273cfcabdeba8901292427310d93.jpg" alt="Projeto 1">
+                <div class="project-overlay">
+                    <button class="btn-view">Ver Detalhes</button>
+                </div>
             </div>
-            <div class="project-item">
-                <img src="IMG_20260419_234142.jpg" alt="Projeto">
-                <div class="project-overlay"><span>Ver Detalhes</span></div>
+            <div class="project-card">
+                <img src="IMG_20260419_234142.jpg" alt="Projeto 2">
+                <div class="project-overlay">
+                    <button class="btn-view">Ver Detalhes</button>
+                </div>
             </div>
-            <div class="project-item">
-                <img src="c2ebb795411eab761d324593fbcae3d3.jpg" alt="Projeto">
-                <div class="project-overlay"><span>Ver Detalhes</span></div>
+            <div class="project-card">
+                <img src="c2ebb795411eab761d324593fbcae3d3.jpg" alt="Projeto 3">
+                <div class="project-overlay">
+                    <button class="btn-view">Ver Detalhes</button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>&copy; 2026 LOPES DIGITAL CO. // UBAÍ - MG</footer>
 
@@ -421,37 +452,51 @@
             }
         }
 
+        // AUTO-OPEN DO BAÚ APÓS EXATAMENTE 2 SEGUNDOS (2000ms)
         window.addEventListener('DOMContentLoaded', () => {
-            // Animação dos projetos ao rolar
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) entry.target.classList.add('visible');
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.project-item').forEach(el => observer.observe(el));
-
-            // Auto-open do baú
             setTimeout(() => {
                 const txt = document.getElementById('price-txt');
-                if (!txt.classList.contains('show')) togglePrice();
+                if (!txt.classList.contains('show')) {
+                    togglePrice();
+                }
             }, 2000); 
+        });
+
+        // ANIMAÇÃO DE APARECER PROJETOS AO ROLAR A PÁGINA
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
         });
 
         function navegar(destino) {
             const overlay = document.getElementById('transition-overlay');
             overlay.style.opacity = '1'; overlay.style.pointerEvents = 'all';
-            setTimeout(() => { 
-                window.location.href = (destino === 'tech') ? "pages/tech.html" : "#"; 
-            }, 500);
+            setTimeout(() => { window.location.href = (destino === 'tech') ? "pages/tech.html" : "#"; }, 500);
         }
 
         async function chamarWhatsapp(event) {
             event.preventDefault();
             const nome = document.getElementById('nome_lead').value;
+            const zap = document.getElementById('whatsapp_lead').value;
+            const email = document.getElementById('email_lead').value;
+            
+            fetch("https://api.sheetbest.com/sheets/2f39b228-9d1f-45e0-8dff-c34c14c99763", {
+                method: "POST", mode: "cors", headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "Nome": nome, "WhatsApp": zap, "Email": email, "Data": new Date().toLocaleString() })
+            });
+            
             window.open(`https://wa.me/5538997404945?text=Olá, meu nome é ${nome} e quero um orçamento!`, '_blank');
         }
 
-        const icons = ['🏎️', '🚀', '⚡', '💻'];
+        const icons = ['🏎️', '🍄', '🍌', '⭐', '🐢', '🛸', '👾', '🚀', '⚡', '💻'];
         const container = document.getElementById('bg-elements');
         function createElements() {
             container.innerHTML = '';
@@ -460,19 +505,4 @@
                 el.className = 'b-element';
                 el.innerText = icons[Math.floor(Math.random() * icons.length)];
                 el.style.setProperty('--sx', Math.random() * 100 + 'vw');
-                el.style.setProperty('--sy', Math.random() * 100 + 'vh');
-                el.style.setProperty('--ex', Math.random() * 100 + 'vw');
-                el.style.setProperty('--ey', Math.random() * 100 + 'vh');
-                el.style.animationDelay = Math.random() * 15 + 's';
-                el.style.left = "0"; el.style.top = "0";
-                container.appendChild(el);
-            }
-        }
-        createElements();
-        window.onpageshow = () => {
-            const overlay = document.getElementById('transition-overlay');
-            if(overlay) { overlay.style.opacity = '0'; overlay.style.pointerEvents = 'none'; }
-        };
-    </script>
-</body>
-</html>
+            
